@@ -7,9 +7,10 @@
 
 {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<link rel="icon" href="https://capeandbay.com/wp-content/uploads/2019/11/cropped-favicon-32x32.png" sizes="32x32">
-<link rel="icon" href="https://capeandbay.com/wp-content/uploads/2019/11/cropped-favicon-192x192.png" sizes="192x192">
-<link rel="apple-touch-icon-precomposed" href="https://capeandbay.com/wp-content/uploads/2019/11/cropped-favicon-180x180.png">
+<link rel="icon" href="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-32x32.png" sizes="32x32">
+<link rel="icon" href="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-180x180.png">
+<meta name="msapplication-TileImage" content="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-270x270.png">
 
 <title>
   {{ isset($title) ? $title.' :: '.config('backpack.base.project_name').' Admin' : config('backpack.base.project_name').' Admin' }}
