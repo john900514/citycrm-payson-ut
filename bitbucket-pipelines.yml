@@ -50,7 +50,6 @@ pipelines:
             - composer
             - node
           deployment: staging
-          trigger: manual
           script:
             - curl -sL https://deb.nodesource.com/setup_10.x | bash -
             - apt-get update && apt-get install -y libzip-dev zip nodejs
