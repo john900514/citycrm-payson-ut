@@ -13,6 +13,7 @@ pipelines:
           caches:
             - composer
             - node
+            - yarn
           script:
             - curl -sL https://deb.nodesource.com/setup_10.x | bash -
             - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -43,24 +44,6 @@ pipelines:
             - ln -f -s .env.pipelines .env
             - vendor/bin/vapor deploy production
     demo:
-      - step:
-          name: Perform Unit Testing Staging
-          caches:
-            - composer
-            - node
-          script:
-            - curl -sL https://deb.nodesource.com/setup_10.x | bash -
-            - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-            - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-            - apt-get update && apt-get install -y libzip-dev zip nodejs yarn
-            - docker-php-ext-install zip
-            - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-            - composer install --no-interaction --prefer-dist  --optimize-autoloader
-            - ln -f -s .env.pipelines .env
-            - yarn && yarn run dev
-            - php artisan serve &
-            - sleep 5
-            - php artisan config:clear && vendor/bin/phpunit
       - step:
           name: Execute Staging Deployment
           caches:

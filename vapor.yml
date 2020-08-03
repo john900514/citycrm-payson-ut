@@ -18,7 +18,7 @@ environments:
         - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
         - 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
         - 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list'
-          - 'sudo apt-get update && apt-get install nodejs yarn'
+        - 'apt-get update && apt-get install nodejs yarn'
         - 'yarn && yarn run prod && rm -rf node_modules'
   staging:
       domain: paysondemo.citycrm.org
@@ -36,7 +36,7 @@ environments:
         - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
         - 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
         - 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list'
-        - 'sudo apt-get update && apt-get install nodejs yarn'
+        - 'apt-get update && apt-get install nodejs yarn'
         - 'yarn && yarn run dev && rm -rf node_modules'
       deploy:
         - 'php artisan migrate --force'
