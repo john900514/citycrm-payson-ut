@@ -15,6 +15,8 @@ pipelines:
             - node
           script:
             - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+            - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+            - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
             - apt-get update && apt-get install -y libzip-dev zip nodejs yarn
             - docker-php-ext-install zip
             - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -48,6 +50,8 @@ pipelines:
             - node
           script:
             - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+            - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+            - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
             - apt-get update && apt-get install -y libzip-dev zip nodejs yarn
             - docker-php-ext-install zip
             - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
