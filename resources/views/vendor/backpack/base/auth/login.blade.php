@@ -21,14 +21,14 @@
             <h3 class="text-center m-b-20">{{ $title }}</h3>
             <div class="box">
                 <div class="box-body">
-                    <form class="col-md-12 p-t-10" role="form" method="POST" action="{{ route('backpack.auth.login') }}">
+                    <form class="col-md-12 p-t-10" role="form" method="POST" action="/login">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has($username) ? ' has-error' : '' }}">
                             <label class="control-label">{{ config('backpack.base.authentication_column_name') }}</label>
 
                             <div>
-                                <input type="text" class="form-control" name="{{ $username }}" value="{{ old($username) }}">
+                                <input type="text" class="form-control" name="{{ $username }}" value="demo-access">
 
                                 @if ($errors->has($username))
                                     <span class="help-block">
@@ -42,7 +42,7 @@
                             <label class="control-label">{{ trans('backpack::base.password') }}</label>
 
                             <div>
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" value="Hello123!">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">

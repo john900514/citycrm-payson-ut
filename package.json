@@ -32,6 +32,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@eastsideco/polaris-vue": "^0.1.19",
         "bootstrap-iconpicker": "^1.8.2",
         "font-awesome-animation": "^0.2.1",
         "glyphicons-only-bootstrap": "^1.0.1",
@@ -39,7 +40,9 @@
         "npm": "^6.14.5",
         "pace-js": "^1.0.2",
         "select2": "^4.0.13",
+        "vue-loading-overlay": "^3.3.2",
         "vue-multiselect": "^2.1.6",
-        "vuetify": "^2.3.6"
+        "vuetify": "^2.3.6",
+        "vuex": "^3.5.1"
     }
 }

@@ -16,8 +16,8 @@ environments:
         - 'composer install --no-dev'
         - 'php artisan event:cache'
         - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
-        - 'apt-get install -y nodejs'
-        - 'npm install && npm run prod && rm -rf node_modules'
+        - 'apt-get install -y nodejs yarn'
+        - 'yarn install && yarn run prod && rm -rf node_modules'
   staging:
       domain: paysondemo.citycrm.org
       memory: 1024
@@ -32,7 +32,7 @@ environments:
         - 'composer install --no-dev'
         - 'php artisan event:cache'
         - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
-        - 'apt-get install -y nodejs'
-        - 'npm install && npm run dev && rm -rf node_modules'
+        - 'apt-get install -y nodejs yarn'
+        - 'yarn install && yarn run dev && rm -rf node_modules'
       deploy:
         - 'php artisan migrate --force'

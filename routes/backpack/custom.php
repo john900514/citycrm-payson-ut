@@ -10,7 +10,11 @@ Route::group([
     'middleware' => ['web'],
     'namespace'  => 'AnchorCMS\Http\Controllers',
 ], function () { // custom admin routes
-    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('backpack.auth.login');
+    Route::get('/autologin', 'Auth\LoginController@autologin');
+    Route::get('/login', function () {
+        return redirect('/');
+    });
+    Route::post('/demo-login', 'Auth\LoginController@showLoginForm')->name('backpack.auth.login');
     //Route::get('/registration', 'Auth\LoginController@render_complete_registration');
 });
 
@@ -35,4 +39,7 @@ Route::group([
     CRUD::resource('crud-abilities', 'Admin\AbilitiesCrudController');
     CRUD::resource('crud-clients', 'Admin\ClientsCrudController');
     CRUD::resource('crud-mobile-apps', 'Admin\MobileAppCrudController');
+    CRUD::resource('/crud-departments', 'Admin\DepartmentsCrudController');
+    CRUD::resource('/crud-images', 'Admin\ImagesCrudController');
+    CRUD::resource('/crud-verbiage', 'Admin\CopyCrudController');
 }); // this should be the absolute last line of this file

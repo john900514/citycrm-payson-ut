@@ -34,6 +34,8 @@ Vue.component('role-ability-assign', require('./components/containers/RoleAbilit
 Vue.component('user-client-role-ability-assign', require('./components/containers/UserClientRoleAbilitySelectContainer.vue').default);
 Vue.component('push-notifications', require('./components/containers/PushNotificationsContainer.vue').default);
 
+Vue.component('text-with-file-upload', require('./components/cms/UploadFileToURL.vue').default);
+Vue.component('image-scheduler', require('./components/cms/ImageScheduler.vue').default);
 //Vue.component('checkbox-grid', require('./components/presenters/CheckboxGridComponent.vue').default);
 
 /**

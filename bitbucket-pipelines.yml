@@ -15,12 +15,12 @@ pipelines:
             - node
           script:
             - curl -sL https://deb.nodesource.com/setup_10.x | bash -
-            - apt-get update && apt-get install -y libzip-dev zip nodejs
+            - apt-get update && apt-get install -y libzip-dev zip nodejs yarn
             - docker-php-ext-install zip
             - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
             - composer install --no-interaction --prefer-dist  --optimize-autoloader
             - ln -f -s .env.pipelines .env
-            - npm install && npm run prod
+            - yarn install && yarn run prod
             - php artisan serve &
             - sleep 5
             - php artisan config:clear && vendor/bin/phpunit
@@ -48,12 +48,12 @@ pipelines:
             - node
           script:
             - curl -sL https://deb.nodesource.com/setup_10.x | bash -
-            - apt-get update && apt-get install -y libzip-dev zip nodejs
+            - apt-get update && apt-get install -y libzip-dev zip nodejs yarn
             - docker-php-ext-install zip
             - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
             - composer install --no-interaction --prefer-dist  --optimize-autoloader
             - ln -f -s .env.pipelines .env
-            - npm install && npm run dev
+            - yarn install && yarn run dev
             - php artisan serve &
             - sleep 5
             - php artisan config:clear && vendor/bin/phpunit

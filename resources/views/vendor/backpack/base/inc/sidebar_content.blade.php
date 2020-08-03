@@ -10,7 +10,9 @@
                     @if($nav_option->is_submenu == 1)
                         <li class="c-sidebar-nav-dropdown">
                             @if((($nav_option->is_host_user == 1) && (backpack_user()->isHostUser()))
-                                || (($nav_option->is_host_user == 0) && (backpack_user()->client_id == $nav_option->client_id))
+                                || (($nav_option->is_host_user == 0) && (backpack_user()->client_id == $nav_option->client_id)
+                                || ((backpack_user()->isHostUser()) && session()->has('active_client') && (session()->get('active_client') == $nav_option->client_id))
+                                )
                                 )
                                 <a class="c-sidebar-nav-dropdown-toggle" @if(!is_null($nav_option->route))href="{!! $nav_option->route !!}"@endif>
                                     @if(!is_null($nav_option->icon))<i class="{!! $nav_option->icon !!}"></i>@endif{!!  $nav_option->name !!}
@@ -35,6 +37,7 @@
                     @else
                         @if((($nav_option->is_host_user == 1) && (backpack_user()->isHostUser()))
                         || (($nav_option->is_host_user == 0) && (backpack_user()->client_id == $nav_option->client_id))
+                        || ((backpack_user()->isHostUser()) && session()->has('active_client') && (session()->get('active_client') == $nav_option->client_id))
                         )
                             <li class="c-sidebar-nav-item">
                                 <a @if(!is_null($nav_option->route))href="{!! $nav_option->route !!}"@endif class="c-sidebar-nav-link" target="_self">

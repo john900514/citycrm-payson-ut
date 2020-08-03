@@ -2,6 +2,7 @@
 
 namespace AnchorCMS\Http\Controllers\Auth;
 
+use AnchorCMS\Clients;
 use Backpack\Base\app\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -103,5 +104,22 @@ class LoginController extends Controller
         $this->data['username'] = $this->username();
 
         return view('backpack::auth.login', $this->data);
+    }
+
+    public function autologin(Request $request, Clients $clients)
+    {
+        $data = $request->all();
+
+        if(array_key_exists('v', $data))
+        {
+            $client = $clients->find($data['v']);
+
+            if(!is_null($client))
+            {
+                return view('login');
+            }
+        }
+
+        return view('errors.401');
     }
 }

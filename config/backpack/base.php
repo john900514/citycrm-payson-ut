@@ -12,11 +12,11 @@ return [
     */
 
     // Project name. Shown in the breadcrumbs and a few other places.
-    'project_name' => 'AnchorCMS',
+    'project_name' => 'City CRM - Demo: Payson, UT',
 
     // Menu logos
-    'logo_lg'   => '<img src="https://amchorcms-assets.s3.amazonaws.com/anchorCMSLogo.png" style="width: 75%;">',
-    'logo_mini' => '<img src="https://capeandbay.com/wp-content/uploads/2019/11/cropped-favicon-180x180.png" style="width: 50%;">',
+    'logo_lg'   => '<img src="https://paysonutah.org/storage/2016/05/Logo125.png" style="width: 25%;">',
+    'logo_mini' => '<img src="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-192x192.png" style="width: 50%;">',
 
     // Developer or company name. Shown in footer.
     'developer_name' => 'Cape & Bay',
@@ -152,5 +152,5 @@ return [
 
     'license_code' => env('BACKPACK_LICENSE', false),
 
-    'use_right_sidebar' => true
+    'use_right_sidebar' => false
 ];
