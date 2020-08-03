@@ -17,7 +17,7 @@ environments:
         - 'php artisan event:cache'
         - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
         - 'apt-get install -y nodejs yarn'
-        - 'yarn install && yarn run prod && rm -rf node_modules'
+        - 'yarn && yarn run prod && rm -rf node_modules'
   staging:
       domain: paysondemo.citycrm.org
       memory: 1024
@@ -33,6 +33,6 @@ environments:
         - 'php artisan event:cache'
         - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
         - 'apt-get install -y nodejs yarn'
-        - 'yarn install && yarn run dev && rm -rf node_modules'
+        - 'yarn && yarn run dev && rm -rf node_modules'
       deploy:
         - 'php artisan migrate --force'

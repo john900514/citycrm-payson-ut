@@ -20,7 +20,7 @@ pipelines:
             - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
             - composer install --no-interaction --prefer-dist  --optimize-autoloader
             - ln -f -s .env.pipelines .env
-            - yarn install && yarn run prod
+            - yarn && yarn run prod
             - php artisan serve &
             - sleep 5
             - php artisan config:clear && vendor/bin/phpunit
@@ -53,7 +53,7 @@ pipelines:
             - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
             - composer install --no-interaction --prefer-dist  --optimize-autoloader
             - ln -f -s .env.pipelines .env
-            - yarn install && yarn run dev
+            - yarn && yarn run dev
             - php artisan serve &
             - sleep 5
             - php artisan config:clear && vendor/bin/phpunit
