@@ -13,7 +13,6 @@ pipelines:
           caches:
             - composer
             - node
-            - yarn
           script:
             - curl -sL https://deb.nodesource.com/setup_10.x | bash -
             - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
