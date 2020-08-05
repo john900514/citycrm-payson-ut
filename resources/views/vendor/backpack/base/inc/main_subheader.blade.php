@@ -1,7 +1,7 @@
 <div class="c-subheader justify-content-between px-3">
 
     <ol class="breadcrumb border-0 m-0 px-0 px-md-3">
-        <li class="breadcrumb-item">AnchorCMS</li>
+        <li class="breadcrumb-item">CityCRM</li>
         <!-- @todo - Make this the Active Client -->
         <li class="breadcrumb-item"><a href="dashboard">{!! backpack_user()->getActiveClient() !!}</a></li>
 
@@ -23,6 +23,13 @@
 
     <!-- @todo - do something REALLY awesome with this! -->
     <div class="c-subheader-nav d-md-down-none mfe-2">
+        @if(session()->has('active_department'))
+        <ol class="breadcrumb border-0 m-0 px-0 px-md-3">
+            <li class="breadcrumb-item">Department</li>
+            <li class="breadcrumb-item"><a class="breadcrumb-item" :style="'color:#988fed;padding-left: 2.5%;'">{!! \AnchorCMS\Departments::find(session()->get('active_department'))->name !!}</a></li>
+
+        </ol>
+        @endif
 {{--        <a class="c-subheader-nav-link" href="#">--}}
 {{--            <i class="fad fa-chart-line c-icon" style="margin-right: 5%;"></i>  Dashboard--}}
 {{--        </a>--}}

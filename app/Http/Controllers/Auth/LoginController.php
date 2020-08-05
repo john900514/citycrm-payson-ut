@@ -75,6 +75,8 @@ class LoginController extends Controller
         // Do the default logout procedure
         $this->guard()->logout();
 
+        session()->forget('active_client');
+        session()->forget('active_department');
         // And redirect to custom location
         return redirect($this->redirectAfterLogout);
     }

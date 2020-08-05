@@ -69,12 +69,14 @@ class User extends Authenticatable
 
     public function getActiveClient()
     {
-        $results = $this->client()->first()->name;
-
         if(session()->has('active_client'))
         {
             $client_id = session()->get('active_client');
             $results = Clients::find($client_id)->name;
+        }
+        else
+        {
+            $results = 'All Clients';
         }
 
         return $results;

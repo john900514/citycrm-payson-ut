@@ -16,6 +16,10 @@ class Clients extends Model
 
     protected $keyType = 'string';
 
+    protected $casts = [
+        'id' => 'uuid'
+    ];
+
     protected $fillable = ['name', 'active'];
 
     public static function getAllClientsDropList()
@@ -23,11 +27,40 @@ class Clients extends Model
         $results = ['Select a Client Account'];
 
         $records = self::all();
-        $host_uuid = self::getHostClient();
+
+        if(count($records) > 0)
+        {
+            foreach ($records as $client)
+            {
+                $results[$client->id] = $client->name;
+            }
+        }
+
+        return $results;
+    }
+
+    public static function getAllClientsScopedDropList()
+    {
+        $results = ['Select a Client Account'];
+
+        $records = self::all();
 
         if(count($records) > 0)
         {
             foreach ($records as $client) {
+                if(session()->has('active_client'))
+                {
+                    if($client->id == session()->get('active_client'))
+                    {
+                        $results[$client->id] = $client->name;
+                    }
+                }
+                else
+                {
+                    $results[$client->id] = $client->name;
+                }
+
+                /*
                 if(($client->uuid == $host_uuid) && (backpack_user()->client_id == $host_uuid))
                 {
                     $results[$client->id] = $client->name;
@@ -40,6 +73,7 @@ class Clients extends Model
                 {
                     $results[$client->id] = $client->name;
                 }
+                */
             }
         }
 

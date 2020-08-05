@@ -31,24 +31,8 @@ class RolesCrudController extends CrudController
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/crud-roles');
         $this->crud->setEntityNameStrings('roles', 'roles');
 
-        if(backpack_user()->isHostUser())
-        {
-            if(session()->has('active_client'))
-            {
-                $this->crud->addClause('where', 'client_id', '=', session()->get('active_client'));
-            }
-        }
-        else
-        {
-            if(backpack_user()->can('create-roles'))
-            {
-                $this->crud->addClause('where', 'client_id', '=', backpack_user()->client_id);
-            }
-            else
-            {
-                $this->crud->hasAccessOrFail('');
-            }
-        }
+        $this->qualifyAccess();
+
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Configuration
@@ -72,11 +56,27 @@ class RolesCrudController extends CrudController
         ];
 
         $add_role_client_select = [
-            'name' => 'client_id',
+            'name' => 'entity_id',
             'label' => 'Assign a Client',
             'type' => 'select2_from_array',
-            'options' => Clients::getAllClientsDropList()
+            'options' => Clients::getAllClientsScopedDropList(),
+            'default' => $this->getSomething()
         ];
+
+        if(session()->has('active_client'))
+        {
+            if(!array_key_exists('attributes', $add_role_client_select))
+            {
+                $add_role_client_select['attributes'] = [];
+            }
+
+            $add_role_client_select['attributes']['readonly'] = 'readonly';
+
+            if(!backpack_user()->isHostUser())
+            {
+                $add_role_client_select['type'] = 'hidden';
+            }
+        }
 
         $route = \Route::current()->uri();
         $mode = 'edit';
@@ -117,61 +117,127 @@ class RolesCrudController extends CrudController
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
 
-    public function store(StoreRequest $request, Roles $role_model)
+    private function qualifyAccess()
     {
-        // your additional operations before save here
-        //$redirect_location = parent::storeCrud();
-        $new_role = Bouncer::role()->firstOrCreate([
-            'name' => $request->all()['name'],
-            'title' => $request->all()['title']
-        ]);
+        /**
+         * The only users that have access to this CRUD are -
+         * 1. God users can see all roles, scoped and unscoped
+         * 2. Admin Users can see all roles, scoped and unscoped
+         * 3. Client Executives can see all roles scopes to their client
+         * 4. Host users that are not gods or admins must have the create-roles ability and are scoped to their client
+         * 4. Client users that are not executives must have the create-roles ability and are scoped to their client
+         */
+        $client_id = session()->has('active_client')
+            ? session()->get('active_client')
+            : backpack_user()->client_id;
 
-        if($new_role)
+        $client = Clients::find($client_id);
+
+        if(backpack_user()->can('create-roles', $client))
         {
-            $new_role->client_id = $request->all()['client_id'];
-            $new_role->save();
-
-            $requested_abilities = explode(',', $request->all()['abilities']);
-
-            if(count($requested_abilities) == 1 && empty($requested_abilities[0]))
+            if(session()->has('active_client'))
             {
-                $requested_abilities[0] = $request->all()['abilities'];
+                $this->crud->addClause('where', 'client_id', '=', session()->get('active_client'));
             }
-
-            foreach ($requested_abilities as $idx => $ab)
-            {
-                $requested_abilities[$ab] = $ab;
-                unset($requested_abilities[$idx]);
-            }
-
-            $role = $request->all()['name'];
-            $abilities = $role_model->getAssignedAbilities($role);
-            if(count($abilities) > 0)
-            {
-                // retract any abilities not in $requested_abilities
-                foreach ($abilities as $ability)
-                {
-                    if(!array_key_exists($ability['name'], $requested_abilities))
-                    {
-                        Bouncer::disallow($role)->to($ability['name']);
-                    }
-                }
-
-                foreach($requested_abilities as $req_ability)
-                {
-                    Bouncer::allow($role)->to($req_ability);
-                }
-            }
-
-            Alert::success(trans('backpack::crud.insert_success'))->flash();
         }
         else
         {
-            Alert::error(trans('backpack::crud.insert_fail'))->flash();
+            $this->crud->hasAccessOrFail('');
         }
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        // show a success message
+    }
+
+    public function store(StoreRequest $request, Roles $role_model)
+    {
+        $data = $request->all();
+
+        if(array_key_exists('client_id', $data))
+        {
+            $client_id = $data['client_id'];
+        }
+        else
+        {
+            $client_id = session()->has('active_client')
+                ? session()->get('active_client')
+                : backpack_user()->client_id;
+
+            $data['client_id'] = $client_id;
+        }
+
+        $client = Clients::find($client_id);
+
+        if(backpack_user()->can('create-roles', $client))
+        {
+            // your additional operations before save here
+            //$redirect_location = parent::storeCrud();
+            if(array_key_exists('name', $data))
+            {
+                if(is_null($data['name']))
+                {
+                    \Alert::error('Error - missing role name.')->flash();
+                    return redirect()->back();
+                }
+            }
+
+            if(array_key_exists('title', $data))
+            {
+                if(is_null($data['title']))
+                {
+                    \Alert::error('Error - missing role title.')->flash();
+                    return redirect()->back();
+                }
+            }
+
+            $new_role = Bouncer::role();
+
+            $payload = [
+                'name' => $data['name'],
+                'title' => $data['title'],
+                'client_id' => $data['entity_id'],
+            ];
+
+            foreach ($payload as $col => $val)
+            {
+                $new_role->$col = $val;
+            }
+
+            if($new_role->save())
+            {
+                $requested_abilities = explode(',', $request->all()['abilities']);
+
+                if(count($requested_abilities) == 1 && empty($requested_abilities[0]))
+                {
+                    $requested_abilities[0] = $request->all()['abilities'];
+                }
+
+                foreach ($requested_abilities as $idx => $ab)
+                {
+                    $ability = Bouncer::ability();
+                    $ability = $ability->find($ab);
+                    $requested_abilities[$ability->name] = $ability;
+                    unset($requested_abilities[$idx]);
+                }
+
+                $role = $data['name'];
+                foreach($requested_abilities as $req_ability)
+                {
+                    Bouncer::allow($role)->to($req_ability, $client);
+                }
+
+                Alert::success(trans('backpack::crud.insert_success'))->flash();
+            }
+            else
+            {
+                Alert::error(trans('backpack::crud.insert_fail'))->flash();
+            }
+            // your additional operations after save here
+            // use $this->data['entry'] or $this->crud->entry
+            // show a success message
+        }
+        else
+        {
+            \Alert::error('Access Denied. You do not have permission to create new abilities for this client.')->flash();
+        }
+
 
         return redirect('/crud-roles');
     }
@@ -180,45 +246,98 @@ class RolesCrudController extends CrudController
     {
         // your additional operations before save here
         //$redirect_location = parent::updateCrud($request);
-        if(Bouncer::is(backpack_user())->a('god', 'admin'))
+        $data = $request->all();
+
+        if(array_key_exists('client_id', $data))
         {
-            $requested_abilities = explode(',', $request->all()['abilities']);
+            $client_id = $data['client_id'];
+        }
+        else
+        {
+            $client_id = session()->has('active_client')
+                ? session()->get('active_client')
+                : backpack_user()->client_id;
 
-            if(count($requested_abilities) == 1 && empty($requested_abilities[0]))
+            $data['client_id'] = $client_id;
+        }
+
+        $client = Clients::find($client_id);
+
+        if(backpack_user()->can('create-roles', $client))
+        {
+            if(array_key_exists('name', $data))
             {
-                $requested_abilities[0] = $request->all()['abilities'];
-            }
-
-            foreach ($requested_abilities as $idx => $ab)
-            {
-                $requested_abilities[$ab] = $ab;
-                unset($requested_abilities[$idx]);
-            }
-
-            $role = $request->all()['name'];
-            $abilities = $role_model->getAssignedAbilities($role);
-
-            if(count($abilities) > 0)
-            {
-                // retract any abilities not in $requested_abilities
-                foreach ($abilities as $ability)
+                if(is_null($data['name']))
                 {
-                    if(!array_key_exists($ability['name'], $requested_abilities))
+                    \Alert::error('Error - missing role name.')->flash();
+                    return redirect()->back();
+                }
+            }
+
+            if(array_key_exists('title', $data))
+            {
+                if(is_null($data['title']))
+                {
+                    \Alert::error('Error - missing role title.')->flash();
+                    return redirect()->back();
+                }
+            }
+
+            $role = $this->crud->model->find($data['id']);
+
+            $payload = [
+                'name' => $data['name'],
+                'title' => $data['title'],
+            ];
+
+            foreach ($payload as $col => $val)
+            {
+                $role->$col = $val;
+            }
+
+            if($role->save())
+            {
+                $requested_abilities = explode(',', $request->all()['abilities']);
+
+                if(count($requested_abilities) == 1 && empty($requested_abilities[0]))
+                {
+                    $requested_abilities[0] = $request->all()['abilities'];
+                }
+
+                $temp_ab = [];
+                foreach ($requested_abilities as $idx => $ab)
+                {
+                    $ability = Bouncer::ability();
+                    $ability = $ability->find($ab);
+                    $temp_ab[$ability->id] = $ability;
+                }
+
+                $requested_abilities = $temp_ab;
+
+                $role = $request->all()['name'];
+                $abilities = $role_model->getAssignedAbilities($role);
+
+                if(count($abilities) > 0)
+                {
+                    // retract any abilities not in $requested_abilities
+                    foreach ($abilities as $ability)
                     {
-                        Bouncer::disallow($role)->to($ability['name']);
+                        if(!array_key_exists($ability['id'], $requested_abilities))
+                        {
+                            $ab = Bouncer::ability()->find($ability['id']);
+                            Bouncer::disallow($role)->to($ab);
+                        }
                     }
                 }
-            }
 
-            foreach($requested_abilities as $req_ability)
-            {
-                if(!is_null($req_ability))
+                $role = $data['name'];
+                foreach($requested_abilities as $req_ability)
                 {
-                    Bouncer::allow($role)->to($req_ability);
+                    Bouncer::allow($role)->to($req_ability, $client);
                 }
-            }
 
-            Alert::success(trans('backpack::crud.insert_success'))->flash();
+                Alert::success(trans('backpack::crud.insert_success'))->flash();
+            }
         }
         else
         {
@@ -228,5 +347,21 @@ class RolesCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return redirect('/crud-roles');
+    }
+
+    private function getSomething()
+    {
+        $id = \Route::current()->parameter('crud_role');
+
+        if($id)
+        {
+            $role = Bouncer::role()->find($id);
+            $results = $role->client_id;
+        }
+        else
+        {
+            $results = session()->has('active_client') ? session()->get('active_client') : '';
+        }
+        return $results;
     }
 }

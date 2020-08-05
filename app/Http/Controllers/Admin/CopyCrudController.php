@@ -53,7 +53,11 @@ class CopyCrudController extends CrudController
         $this->crud->addField($edit_page);
         $this->crud->addField(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
         $this->crud->addField(['name' => 'title', 'type' => 'text', 'label' => 'Title']);
-        $this->crud->addField(['name' => 'desc', 'type' => 'textarea', 'label' => 'Description']);
+        $this->crud->addField([
+            'name' => 'desc',
+            'type' => 'tinymce',
+            'label' => 'Description',
+            'options' => []]);
         $this->crud->addField(['name' => 'active', 'type' => 'checkbox', 'label' => 'Active', 'default' => true]);
 
 	    $this->crud->addField(

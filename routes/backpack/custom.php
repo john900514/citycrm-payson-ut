@@ -20,7 +20,7 @@ Route::group([
 
 Route::group([
     'prefix'     => config('backpack.base.route_prefix', 'admin'),
-    'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
+    'middleware' => ['web', 'check-admin'],
     'namespace'  => 'AnchorCMS\Http\Controllers',
 ], function () { // custom admin routes
 

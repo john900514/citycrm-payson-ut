@@ -31,7 +31,7 @@
                 let _this = this;
                 this.loading = true;
 
-                let client_id = $("[name='client_id']").val();
+                let client_id = $("[name='entity_id']").val();
                 $.ajax({
                     url: '/abilities?client_id='+client_id,
                     method: 'GET',
@@ -41,10 +41,11 @@
                         if(data['success']) {
                             _this.availableAbilities = data['abilities'];
 
-                            for(let name in _this.availableAbilities) {
+                            for(let name in data['abilities']) {
                                 let title = _this.availableAbilities[name];
-                                _this.availableAbilities[name] = {
-                                    title: title,
+                                _this.availableAbilities[title.id] = {
+                                    title: title.title,
+                                    id: title.id,
                                     disabled: false,
                                     checked: false
                                 }
@@ -61,7 +62,7 @@
                             _this.loading = false;
                         }
 
-
+                        console.log('Available Abilities', _this.availableAbilities)
                     },
                     error: function (e) {
                         console.log('Error contacting server - ',e);
@@ -73,42 +74,48 @@
                 let _this = this;
                 this.loading = true;
                 let role = $("[name='name']").val();
-                let client_id = $("[name='client_id']").val();
+                let client_id = $("[name='entity_id']").val();
 
-                $.ajax({
-                    url: '/abilities/'+role+'?client_id='+client_id,
-                    method: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log('Enabled Returned Data - ', data);
-                        if(data['success']) {
-                            for(let idx in data['assigned']) {
-                                let name = data['assigned'][idx]['name'];
-                                if(name in _this.availableAbilities) {
-                                    _this.availableAbilities[name].checked = true;
-                                    _this.processChecked(_this.availableAbilities[name], name);
+                if (role !== '') {
+                    $.ajax({
+                        url: '/abilities/'+role+'?client_id='+client_id,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log('Enabled Returned Data - ', data);
+                            if(data['success']) {
+                                for(let idx in data['assigned']) {
+                                    if(data['assigned'][idx]['id'] in _this.availableAbilities) {
+                                        let id = data['assigned'][idx]['id'];
+                                        _this.availableAbilities[id].checked = true;
+                                        _this.processChecked(_this.availableAbilities[id], id);
+                                    }
                                 }
                             }
-                        }
 
-                        _this.loading = false;
-                    },
-                    error: function (e) {
-                        console.log('Error contacting server - ',e);
-                        _this.loading = false;
-                    }
-                });
+                            _this.loading = false;
+                        },
+                        error: function (e) {
+                            console.log('Error contacting server - ',e);
+                            _this.loading = false;
+                        }
+                    });
+                }
+                else {
+                    console.log('skipping enabled abilities.');
+                }
+
             },
             processChecked(item, name) {
                 console.log('Item Toggled - '+name, item);
                 this.availableAbilities[name] = item;
 
                 if(item.checked) {
-                    this.selectedAbilities.push(name);
+                    this.selectedAbilities.push(item.id);
                 }
                 else {
                     for(let idx in this.selectedAbilities) {
-                        if(this.selectedAbilities[idx] === name) {
+                        if(this.selectedAbilities[idx] === item.id) {
                             this.selectedAbilities.splice(idx, 1);
                         }
                     }
@@ -119,20 +126,20 @@
         },
         mounted() {
             let _this = this;
-            $("[name='client_id']").change(function () {
+            $("[name='entity_id']").change(function () {
                 _this.ajaxGetAllAbilities();
                 _this.showAbilities = true;
             });
 
             let role = $("[name='name']").val();
-            let client_id = $("[name='client_id']").val();
+            let client_id = $("[name='entity_id']").val();
 
-            if((role !== '') && (client_id !== '')) {
+            if((client_id !== '')) {
                 _this.ajaxGetAllAbilities();
                 _this.showAbilities = true;
             }
 
-            console.log('RoleAbilitySelectContainer mounted!', this.mode);
+            console.log('RoleAbilitySelectContainer mounted!', client_id);
         }
     }
 </script>

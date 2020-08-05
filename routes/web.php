@@ -11,6 +11,8 @@
 |
 */
 
+use AnchorCMS\Departments;
+
 Route::get('/', function () {
     return view('welcome');//redirect('dashboard');
 });
@@ -21,15 +23,40 @@ Route::get('/home', function () {
 
 Route::get('/switch/{client_id}', function ($client_id) {
     if(backpack_user()->isHostUser()) {
-        if(backpack_user()->client_id == $client_id)
+        if($client_id == 'all')
         {
             session()->forget('active_client');
+            session()->forget('active_department');
         }
         else
         {
             session()->put('active_client', $client_id);
+            if(session()->has('active_department'))
+            {
+                $dept_id = session()->get('active_department');
+                $dept_record = Departments::find($dept_id);
+
+                if($dept_record->client_id != session()->get('active_client'))
+                {
+                    session()->forget('active_department');
+                }
+            }
         }
     }
+
+    return redirect(url()->previous());
+});
+
+Route::get('/dept-switch/{dept_id}', function ($dept_id) {
+    if($dept_id == 'all')
+    {
+        session()->forget('active_department');
+    }
+    else
+    {
+        session()->put('active_department', $dept_id);
+    }
+
     return redirect(url()->previous());
 });
 
