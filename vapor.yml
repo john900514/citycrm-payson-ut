@@ -13,15 +13,15 @@ environments:
       queues:
         - paysondemo-production-emails
       build:
-        - 'composer install --no-dev'
-        - 'php artisan event:cache'
-        - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
-        - 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
-        - 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list'
-        - 'apt-get update && apt-get install -y nodejs yarn'
-        - 'yarn && yarn run prod && rm -rf node_modules'
+          - 'composer install --no-dev'
+          - 'php artisan event:cache'
+          - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
+          - 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
+          - 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list'
+          - 'apt-get update && apt-get install -y nodejs yarn'
+          - 'yarn && yarn run prod && rm -rf node_modules'
     deploy:
-        - 'php artisan migrate --force'
+          - 'php artisan migrate --force'
   staging:
       domain: paysondemo.citycrm.org
       memory: 1024
@@ -33,12 +33,12 @@ environments:
       queues:
         - paysondemo-staging-emails
       build:
-        - 'composer install --no-dev'
-        - 'php artisan event:cache'
-        - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
-        - 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
-        - 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list'
-        - 'apt-get update && apt-get install -y nodejs yarn'
-        - 'yarn && yarn run dev && rm -rf node_modules'
+          - 'composer install --no-dev'
+          - 'php artisan event:cache'
+          - 'curl -sL https://deb.nodesource.com/setup_10.x | bash -'
+          - 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
+          - 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list'
+          - 'apt-get update && apt-get install -y nodejs yarn'
+          - 'yarn && yarn run dev && rm -rf node_modules'
       deploy:
-        - 'php artisan migrate --force'
+          - 'php artisan migrate --force'
