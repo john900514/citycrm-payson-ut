@@ -41,6 +41,9 @@ Route::group([
     CRUD::resource('/crud-mobile-apps', 'Admin\MobileAppCrudController');
     CRUD::resource('/crud-departments', 'Admin\DepartmentsCrudController');
     CRUD::resource('/crud-images', 'Admin\ImagesCrudController');
+    Route::post('/crud-images/{image_id}/image-upload', 'Admin\ImagesCrudController@upload_img');
+    Route::post('/crud-images/image-upload', 'Admin\ImagesCrudController@upload_img');
+
     CRUD::resource('/crud-verbiage', 'Admin\CopyCrudController');
     CRUD::resource('/crud-data-changes', 'Admin\AuditTrailCrudController');
     CRUD::resource('/crud-visitors', 'Admin\VisitorActivityCrudController');

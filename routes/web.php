@@ -13,9 +13,7 @@
 
 use AnchorCMS\Departments;
 
-Route::get('/', function () {
-    return view('welcome');//redirect('dashboard');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/home', function () {
     return redirect('dashboard');

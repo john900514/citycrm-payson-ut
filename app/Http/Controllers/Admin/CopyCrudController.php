@@ -41,6 +41,7 @@ class CopyCrudController extends CrudController
 
         $f_page_options = [
             '/' => 'Home',
+            'pixels' => 'Pixel Scripts'
         ];
 
         $edit_page = [
@@ -59,26 +60,6 @@ class CopyCrudController extends CrudController
             'label' => 'Description',
             'options' => []]);
         $this->crud->addField(['name' => 'active', 'type' => 'checkbox', 'label' => 'Active', 'default' => true]);
-
-	    $this->crud->addField(
-		    [
-			    'name' => 'cascade_position',
-			    'type' => 'select_from_array',
-			    'label' => 'Cascade Position',
-			    'options' => [null => 'NULL', 'right' => 'right', 'left' => 'left'],
-			    'allows_null' => false,
-			    'default' => 'one',
-		    ]);
-
-	    $this->crud->addField(
-		    [
-			    'name' => 'style',
-			    'type' => 'select_from_array',
-			    'label' => 'Style',
-			    'options' => ['normal' => 'Normal', 'cascade' => 'Cascade'],
-			    'allows_null' => false,
-			    'default' => 'one',
-		    ]);
 
         $f_page = [
             'type' => 'dropdown',

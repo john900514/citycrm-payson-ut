@@ -20,7 +20,7 @@ class CreateCopiesTable extends Migration
             $table->string('page')->nullable();
             $table->string('name')->nullable();
             $table->string('title')->nullable();
-            $table->string('desc')->nullable();
+            $table->mediumText('desc')->nullable();
 
 
             $table->boolean('active')->default(1);

@@ -20,6 +20,7 @@ class CreateImagesTable extends Migration
             $table->string('page')->nullable();
             $table->string('name')->nullable();
             $table->string('url')->nullable();
+            $table->text('alt')->nullable();
 
             $table->boolean('active')->default(1);
             $table->timestamps();
