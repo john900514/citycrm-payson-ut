@@ -55,7 +55,7 @@ class UsersCrudController extends CrudController
         */
         $this->crud->setModel('AnchorCMS\User');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/crud-users');
-        $this->crud->setEntityNameStrings('AnchorCMS User', 'AnchorCMS Users');
+        $this->crud->setEntityNameStrings('CityCRM User', 'CityCRM Users');
 
         if(backpack_user()->isHostUser())
         {

@@ -25,6 +25,10 @@ class GetSpecificVisitorLocation
 
             if(!$record)
             {
+                if(is_array($data['ip']))
+                {
+                    $data['ip'] = $data['ip'][0];
+                }
                 // If not exists ping ipinfo.io for IP or fail
                 // @todo - before firing out, check the limits or fail!
                 $url = "https://ipinfo.io/{$data['ip']}/json";

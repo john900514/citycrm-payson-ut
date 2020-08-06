@@ -63,7 +63,7 @@ class User extends Authenticatable
         parent::boot();
 
         static::created(function ($user) {
-            OnboardNewUser::dispatch($user, backpack_user())->onQueue('anchor-'.env('APP_ENV').'-emails');
+            OnboardNewUser::dispatch($user, backpack_user())->onQueue('paysondemo-'.env('APP_ENV').'-emails');
         });
     }
 
@@ -90,7 +90,15 @@ class User extends Authenticatable
     public function tapActivity(Activity $activity, string $eventName)
     {
         $user = backpack_user();
-        $activity->causer_id = $user->id;
-        $activity->causer_type = User::class;
+        if(!is_null($user))
+        {
+            $activity->causer_id = $user->id;
+            $activity->causer_type = User::class;
+        }
+        else
+        {
+            // @todo - some other ish here.
+        }
+
     }
 }

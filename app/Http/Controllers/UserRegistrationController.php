@@ -103,7 +103,7 @@ class UserRegistrationController extends Controller
                 {
                     auth()->logout();
                     session()->put('status', 'Registration Success! Login to Continue.');
-                    return redirect('login');
+                    return redirect('autologin?v='.$user->client_id);
                 }
                 else
                 {

@@ -50,7 +50,7 @@ class WelcomeNewUser extends Mailable
         $args['created_at'] = $time_created;
 
         return $this->from(env('MAIL_FROM_ADDRESS','automailer@mail.capeandbay.com'), env('MAIL_FROM_NAME'))
-            ->subject('Welcome to AnchorCMS! Finish Creating Your Account')
+            ->subject('Welcome to CityCRM! Finish Creating Your Account')
             ->view('emails.users.created-notification', $args);
     }
 }
