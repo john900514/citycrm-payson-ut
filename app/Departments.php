@@ -6,12 +6,16 @@ use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Departments extends Model
 {
-    use CrudTrait, SoftDeletes, Uuid;
+    use CrudTrait, LogsActivity, SoftDeletes, Uuid;
 
     protected $fillable = ['name', 'parent_department', 'client_id'];
+
+    protected static $logFillable = true;
 
     protected $casts = [
         'id' => 'uuid'
@@ -114,5 +118,12 @@ class Departments extends Model
         }
 
         return $results;
+    }
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $user = backpack_user();
+        $activity->causer_id = $user->id;
+        $activity->causer_type = User::class;
     }
 }

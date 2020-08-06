@@ -5,12 +5,23 @@ namespace AnchorCMS;
 use AnchorCMS\Permissions;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Roles extends Model
 {
-    use CrudTrait;
+    use CrudTrait, LogsActivity;
 
-    protected $fillable = ['name', 'title'];
+    protected $fillable = ['name', 'title', 'client_id'];
+
+    protected static $logFillable = true;
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $user = backpack_user();
+        $activity->causer_id = $user->id;
+        $activity->causer_type = User::class;
+    }
 
     public function getAssignedAbilities($role, $client_id = null)
     {

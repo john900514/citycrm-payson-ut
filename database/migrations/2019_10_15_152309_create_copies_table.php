@@ -22,6 +22,7 @@ class CreateCopiesTable extends Migration
             $table->string('title')->nullable();
             $table->string('desc')->nullable();
 
+
             $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();

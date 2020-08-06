@@ -24,15 +24,24 @@ class UsersCrudController extends CrudController
     public function setup()
     {
         $this->data['page'] = 'crud-users';
-        if(backpack_user()->cannot('create-users'))
+
+        $client_id = session()->has('active_client')
+            ? session()->get('active_client')
+            : backpack_user()->client_id;
+
+        $client = Clients::find($client_id);
+
+        if(backpack_user()->cannot('create-users', $client))
         {
             $this->crud->hasAccessOrFail('');
         }
 
+        /*
         if(backpack_user()->cannot('edit-users'))
         {
             $this->crud->denyAccess('update');
         }
+        */
 
         if(backpack_user()->cannot('delete-users'))
         {

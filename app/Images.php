@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
+use Spatie\Activitylog\Models\Activity;
 
 class Images extends Model
 {
@@ -20,6 +21,8 @@ class Images extends Model
         'schedule_start',
         'schedule_end',
     ];
+
+    protected static $logFillable = true;
 
     public function getImagesforAPage($page)
     {
@@ -137,5 +140,12 @@ class Images extends Model
         }
 
         return $results;
+    }
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $user = backpack_user();
+        $activity->causer_id = $user->id;
+        $activity->causer_type = User::class;
     }
 }

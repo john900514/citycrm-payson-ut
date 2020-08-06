@@ -187,7 +187,8 @@ class RolesCrudController extends CrudController
                 }
             }
 
-            $new_role = Bouncer::role();
+            //$new_role = Bouncer::role();
+            $new_role = new Roles();
 
             $payload = [
                 'name' => $data['name'],

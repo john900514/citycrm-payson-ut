@@ -34,12 +34,15 @@ Route::group([
     });
 
 
-    CRUD::resource('crud-users', 'Admin\UsersCrudController');
-    CRUD::resource('crud-roles', 'Admin\RolesCrudController');
-    CRUD::resource('crud-abilities', 'Admin\AbilitiesCrudController');
-    CRUD::resource('crud-clients', 'Admin\ClientsCrudController');
-    CRUD::resource('crud-mobile-apps', 'Admin\MobileAppCrudController');
+    CRUD::resource('/crud-users', 'Admin\UsersCrudController');
+    CRUD::resource('/crud-roles', 'Admin\RolesCrudController');
+    CRUD::resource('/crud-abilities', 'Admin\AbilitiesCrudController');
+    CRUD::resource('/crud-clients', 'Admin\ClientsCrudController');
+    CRUD::resource('/crud-mobile-apps', 'Admin\MobileAppCrudController');
     CRUD::resource('/crud-departments', 'Admin\DepartmentsCrudController');
     CRUD::resource('/crud-images', 'Admin\ImagesCrudController');
     CRUD::resource('/crud-verbiage', 'Admin\CopyCrudController');
+    CRUD::resource('/crud-data-changes', 'Admin\AuditTrailCrudController');
+    CRUD::resource('/crud-visitors', 'Admin\VisitorActivityCrudController');
+    Route::get('/crud-visitors/{id}/view-more', 'Admin\VisitorActivityCrudController@visitor_activity');
 }); // this should be the absolute last line of this file

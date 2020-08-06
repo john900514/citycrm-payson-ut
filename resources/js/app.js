@@ -37,6 +37,8 @@ Vue.component('push-notifications', require('./components/containers/PushNotific
 Vue.component('text-with-file-upload', require('./components/cms/UploadFileToURL.vue').default);
 Vue.component('image-scheduler', require('./components/cms/ImageScheduler.vue').default);
 //Vue.component('checkbox-grid', require('./components/presenters/CheckboxGridComponent.vue').default);
+Vue.component('cms-visitor-activity', require('./components/containers/VisitorActivityDataComponent.vue').default);
+Vue.component('list-widget', require('./components/presenters/listWidgetComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -21,3 +21,9 @@ Route::group(['prefix' => 'client'], function() {
     Route::get('{client_id}/mobile/{app_id}/notifications/push', 'API\Clients\MobileApps\Notifications\PushNotificationsAPIController@getFiltersFromClient');
     Route::post('{client_id}/mobile/{app_id}/notifications/push/users', 'API\Clients\MobileApps\Notifications\PushNotificationsAPIController@getUsersFromFilters');
 });
+
+Route::get('/visitors/{ip}', 'API\Audit\ActivityTrackingAPIController@ip_activity');
+
+Route::group(['prefix' => 'locations'], function () {
+    Route::post('/ip', 'API\Audit\GeoLocationAPIController@ip_address');
+});
