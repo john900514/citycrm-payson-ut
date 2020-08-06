@@ -19,7 +19,7 @@ environments:
           - 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
           - 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list'
           - 'apt-get update && apt-get install -y nodejs yarn'
-          - 'yarn install --check-files && yarn run prod && rm -rf node_modules'
+          - 'npm install && npm run prod && rm -rf node_modules'
       deploy:
           - 'php artisan migrate --force'
   staging:
@@ -39,6 +39,6 @@ environments:
           - 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
           - 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list'
           - 'apt-get update && apt-get install -y nodejs yarn'
-          - 'yarn install --check-files && yarn run dev && rm -rf node_modules'
+          - 'npm install --check-files && npm run dev && rm -rf node_modules'
       deploy:
           - 'php artisan migrate --force'
