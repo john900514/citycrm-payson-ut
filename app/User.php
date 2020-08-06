@@ -10,10 +10,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use GoldSpecDigital\LaravelEloquentUUID\Foundation\Auth\User as Authenticatable;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use AnchorCMS\Clients;
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Traits\CausesActivity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use CrudTrait, HasRolesAndAbilities, Notifiable, SoftDeletes;
+    use CausesActivity, CrudTrait, HasRolesAndAbilities, LogsActivity, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +26,8 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name', 'last_name', 'username', 'email', 'password', 'client_id',
     ];
+
+    protected static $logFillable = true;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -80,5 +85,12 @@ class User extends Authenticatable
         }
 
         return $results;
+    }
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $user = backpack_user();
+        $activity->causer_id = $user->id;
+        $activity->causer_type = User::class;
     }
 }

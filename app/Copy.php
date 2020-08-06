@@ -6,10 +6,12 @@ use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Copy extends Model
 {
-    use CrudTrait, SoftDeletes, Uuid;
+    use CrudTrait, LogsActivity, SoftDeletes, Uuid;
 
     protected $table = 'copy';
     protected $fillable = [
@@ -21,6 +23,8 @@ class Copy extends Model
       'cascade_position',
       'active'
     ];
+
+    protected static $logFillable = true;
 
     public function getVerbiageforAPage($page)
     {
@@ -85,5 +89,12 @@ class Copy extends Model
         $model = new self();
 
         return $model->getVerbiageforAPageByName($page, $name);
+    }
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $user = backpack_user();
+        $activity->causer_id = $user->id;
+        $activity->causer_type = User::class;
     }
 }
