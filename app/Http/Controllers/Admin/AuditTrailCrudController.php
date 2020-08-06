@@ -2,6 +2,7 @@
 
 namespace AnchorCMS\Http\Controllers\Admin;
 
+use AnchorCMS\Clients;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -19,6 +20,7 @@ class AuditTrailCrudController extends CrudController
     public function setup()
     {
         $this->data['page'] = 'crud-data-changes';
+        $this->qualifyAccess();
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Basic Information
@@ -92,7 +94,7 @@ class AuditTrailCrudController extends CrudController
                         switch(class_basename($subject_model))
                         {
                             case 'User':
-                                $name = $subject->first_name.' '.$subject->last_name;
+                                return $subject->first_name.' '.$subject->last_name;
                                 break;
                             default:
                                 if(array_key_exists('name', $subject->toArray()))
@@ -262,5 +264,23 @@ class AuditTrailCrudController extends CrudController
         ];
 
         return $results;
+    }
+
+    private function qualifyAccess()
+    {
+        $client_id = session()->has('active_client')
+            ? session()->get('active_client')
+            : backpack_user()->client_id;
+
+        $client = Clients::find($client_id);
+
+        if(backpack_user()->can('access-data-changes', $client))
+        {
+
+        }
+        else
+        {
+            $this->crud->hasAccessOrFail('');
+        }
     }
 }
