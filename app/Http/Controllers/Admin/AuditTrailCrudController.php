@@ -116,6 +116,18 @@ class AuditTrailCrudController extends CrudController
                                     $name = $subject->first_name.' '.$subject->last_name;
                                     break;
 
+                                case 'Copy':
+                                    $json = $entry->properties;
+                                    if(array_key_exists('title', $json['attributes']))
+                                    {
+                                        $name = $json['attributes']['title'];
+                                    }
+                                    else
+                                    {
+                                        $name = "Unknown";
+                                    }
+                                    break;
+
                                 case 'Departments':
                                     $json = $entry->properties;
                                     if(array_key_exists('name', $json['attributes']))
@@ -170,15 +182,23 @@ class AuditTrailCrudController extends CrudController
                             case 'User':
                                 return "{$subject->first_name} {$subject->last_name}";
                                 break;
-                            default:
-                                if(array_key_exists('name', $subject->toArray()))
-                                {
-                                    return class_basename($subject_model).' - '.$subject->name;
-                                }
-                                else
-                                {
-                                    return "Unknown";
-                                }
+
+                                default:
+                                    if(!is_null($subject))
+                                    {
+                                        if(array_key_exists('name', $subject->toArray()))
+                                        {
+                                            return class_basename($subject_model).' - '.$subject->name;
+                                        }
+                                        else
+                                        {
+                                            return "Unknown";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        return "Unknown";
+                                    }
                         }
                     }
                     else
