@@ -3,8 +3,8 @@
 @section('header')
     <div class="logo-header-section">
         <div class="inner-logo-header">
-            <img v-if="'{!! config('backpack.base.skin_theme') !!}' === 'dark'" src="https://amchorcms-assets.s3.amazonaws.com/anchorCMSLogo.png" />
-            <img v-if="'{!! config('backpack.base.skin_theme') !!}' === 'light'" src="https://amchorcms-assets.s3.amazonaws.com/Anchor+CMS-black.png" />
+            <img v-if="'{!! config('backpack.base.skin_theme') !!}' === 'dark'" src="https://paysonutah.org/storage/bb-plugin/cache/Logo125-landscape.png" />
+            <img v-if="'{!! config('backpack.base.skin_theme') !!}' === 'light'" src="https://paysonutah.org/storage/bb-plugin/cache/Logo125-landscape.png" />
         </div>
     </div>
 @endsection
