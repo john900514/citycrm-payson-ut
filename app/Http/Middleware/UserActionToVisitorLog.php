@@ -30,7 +30,18 @@ class UserActionToVisitorLog
                 'headers' => $request->headers->all()
             ];
 
-            //$payload['headers'] = $_SERVER;
+            $extras = $_SERVER;
+            $dude = env('USER');
+            foreach($extras as $env => $eval)
+            {
+                $e = array_key_exists($env, $_ENV);
+                if($e)
+                {
+                    unset($extras[$env]);
+                }
+            }
+
+            $payload['headers'] = array_merge($payload['headers'],$extras);
             $this->logVisitorActivity($payload);
 
         }

@@ -53,11 +53,13 @@
                         for(let key in this.record['misc_info']) {
                             switch(key) {
                                 case 'REMOTE_ADDR':
+                                case 'x-vapor-source-ip':
                                     this.serverRequest['IP Address'] = this.record['misc_info'][key];
                                     this.ipAddress = this.record['misc_info'][key];
                                     break;
 
                                 case 'HTTP_USER_AGENT':
+                                case 'user-agent':
                                     this.serverRequest['Browser'] = this.record['misc_info'][key];
                                     break;
 
@@ -66,6 +68,7 @@
                                     break;
 
                                 case 'REQUEST_URI':
+                                case 'referer':
                                     this.serverRequest['Uri'] = this.record['misc_info'][key];
                                     break;
 

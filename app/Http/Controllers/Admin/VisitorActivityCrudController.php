@@ -36,8 +36,6 @@ class VisitorActivityCrudController extends CrudController
         $this->crud->denyAccess('delete');
         $this->crud->denyAccess('update');
         $this->crud->denyAccess('create');
-
-
         /**
          * |--------------------------------------------------------------------------
          * | CrudPanel Configuration
@@ -56,7 +54,7 @@ class VisitorActivityCrudController extends CrudController
         ];
 
         $server_info = [
-            'name'  => 'server_info', // the db column name (attribute name)
+            'name'  => 'misc_info', // the db column name (attribute name)
             'label' => "Server Info", // the human-readable label for it
             'type'  => 'text' // the kind of column to show
         ];
@@ -167,9 +165,9 @@ class VisitorActivityCrudController extends CrudController
 
         //Date
         $date_range = [
-                        'type' => 'date_range',
-                        'name' => 'created_at',
-                        'label'=> 'Date Range'
+            'type' => 'date_range',
+            'name' => 'created_at',
+            'label'=> 'Date Range'
         ];
         $this->crud->addFilter($date_range, false, function($value) { // if the filter is active, apply these constraints
             $dates = json_decode($value);
