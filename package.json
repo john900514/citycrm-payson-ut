@@ -32,7 +32,6 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@eastsideco/polaris-vue": "^0.1.19",
         "bootstrap-iconpicker": "^1.8.2",
         "font-awesome-animation": "^0.2.1",
         "glyphicons-only-bootstrap": "^1.0.1",
