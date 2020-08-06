@@ -48,7 +48,8 @@ class UserActionToVisitorLog
         $args = [
             'route' => $data['route'],
             'params' => $data['data'],
-            'serverData' => $data['headers']
+            'serverData' => $data['headers'],
+            'ip' => $data['ip'],
         ];
 
         $this->visitor_activity->insert($args);

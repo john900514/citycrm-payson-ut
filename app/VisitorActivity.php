@@ -38,7 +38,7 @@ class VisitorActivity extends Model
         $model->url_parameters = $data['params'];
         $model->activity_type  = $this->activityType($data['params']);
         $model->campaign       = $this->campaign($data['params']);
-        $model->ip_address     = $data['serverData']['REMOTE_ADDR'];
+        $model->ip_address     = $data['ip'];
 
         $model->misc_info    = $data['serverData'];
 
