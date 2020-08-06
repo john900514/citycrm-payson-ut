@@ -128,6 +128,7 @@ class ImagesCrudController extends CrudController
 
         $f_page_options = [
             '/' => 'Home',
+            'logo' => 'Logo'
 
         ];
 
@@ -142,7 +143,7 @@ class ImagesCrudController extends CrudController
 
         $image_url = [
             'name'  => 'url',  // the db column name (attribute name)
-            'label' => "Image URL", // the human-readable label for it
+            'label' => "Image URL (paste URL or upload up to 5mb limit)", // the human-readable label for it
             'type'  => 'view',
             'view'  => 'city-crm.cms.column-views.for.articles.regarding-image-uploads'
         ];
@@ -170,12 +171,18 @@ class ImagesCrudController extends CrudController
             'default' => true
         ];
 
-        $view_columns = [$page, $name, $image_nail, $status];
+        $alt = [
+            'name'  => 'alt',
+            'label' => 'Alt Accessibility Text',
+            'type'  => 'text',
+        ];
+
+        $view_columns = [$page, $name, $image_nail, $status, $alt];
         $this->crud->addColumns($view_columns);
 
         $create_defs = [];
         $update_defs = [];
-        $both_defs   = [$edit_page, $name, $image_url, $schedule_view, $active];
+        $both_defs   = [$edit_page, $name, $image_url, $alt, $active];
         $this->crud->addFields($update_defs, 'update');
         $this->crud->addFields($both_defs, 'both');
         $this->crud->addFields($create_defs, 'create');
@@ -246,7 +253,7 @@ class ImagesCrudController extends CrudController
         // your additional operations before save here
         $data = $request->all();
 
-        $valid = $this->evaluateImage($data, $imgs);
+        $valid = true;//$this->evaluateImage($data, $imgs);
 
         if($valid)
         {
@@ -380,9 +387,10 @@ class ImagesCrudController extends CrudController
             {
                 // if an unscheduled Active Image exists, yell at the user.
                 $img = $imgs->wherePage($data['page'])->whereName($data['name'])->whereActive(1)
-                    ->whereNull('schedule_start')
-                    ->whereNull('schedule_end')
+                    //->whereNull('schedule_start')
+                    //->whereNull('schedule_end')
                     ->first();
+
                 if(!is_null($img))
                 {
                     \Alert::error('Cannot have more than one active unscheduled image. Please deactivate the <a href="' . backpack_url('image-mgnt') . '/' . $img->id . '/edit">previous</a> image and try again')->flash();

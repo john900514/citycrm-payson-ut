@@ -20,9 +20,14 @@ class Images extends Model
         'active',
         'schedule_start',
         'schedule_end',
+        'alt'
     ];
 
     protected static $logFillable = true;
+
+    protected $casts = [
+        'id' => 'uuid'
+    ];
 
     public function getImagesforAPage($page)
     {
@@ -83,22 +88,22 @@ class Images extends Model
         $record = $this->wherePage($page)
             ->whereName($name)
             ->whereActive(1)
-            ->whereNull('schedule_start')
-            ->whereNull('schedule_end')
+            //->whereNull('schedule_start')
+            //->whereNull('schedule_end')
             ->first();
 
 
         $record2 = $this->wherePage($page)
             ->whereName($name)
             ->whereActive(1)
-            ->whereNotNull('schedule_start')
+            /*->whereNotNull('schedule_start')
             ->where(function($query) {
                 $query->whereRaw('NOW() > schedule_start')
                     ->where(function ($query) {
                        $query->whereNull('schedule_end')
                             ->orWhereRaw('NOW() < schedule_end');
                     });
-            })
+            })*/
             ->first();
 
             //->whereRaw('(schedule_start IS NULL OR ((schedule_start <= NOW()) AND (NOW() <= schedule_end)))')
@@ -140,6 +145,20 @@ class Images extends Model
         }
 
         return $results;
+    }
+
+    public static function _getImagesforAPage($page)
+    {
+        $model = new self();
+
+        return $model->getImagesforAPage($page);
+    }
+
+    public static function _getImagesforAPageByName($page, $name)
+    {
+        $model = new self();
+
+        return $model->getImagesforAPageByName($page, $name);
     }
 
     public function tapActivity(Activity $activity, string $eventName)

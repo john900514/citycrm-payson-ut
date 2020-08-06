@@ -26,6 +26,10 @@ class Copy extends Model
 
     protected static $logFillable = true;
 
+    protected $casts = [
+        'id' => 'uuid'
+    ];
+
     public function getVerbiageforAPage($page)
     {
         $results = false;
@@ -38,22 +42,9 @@ class Copy extends Model
         {
             $results = [];
 
-            foreach($record as $def)
+            foreach($record as $idx => $def)
             {
-                if($def->style == 'normal')
-                {
-                    $results[$def->name] = $def->desc;
-                }
-                else if($def->style == 'cascade')
-                {
-                    $results[$def->name] =  [
-                        'title' => $def->title,
-                        'img' => null,
-                        'img_orientation' => $def->cascade_position,
-                        'desc' => $def->desc
-                    ];
-                }
-
+                $results[$def->name.'-'.$idx] = $def->desc;
             }
         }
 

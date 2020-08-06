@@ -1,707 +1,21 @@
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+@extends('payson.layouts.default')
 
-    <link rel="stylesheet" href="{!! asset('/css/all.min.css') !!}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya:700">
-    <link rel="stylesheet" href="https://paysonutah.org/template_main/css/bootstrap.min.css">
-    <!--[if lt IE 9]>
-    <script src="https://paysonutah.org/template_main/js/html5shiv.js"></script>
-    <script src="https://paysonutah.org/template_main/js/respond.min.js"></script>
-    <![endif]-->
-    <title>Payson – Experience the Many Layers</title>
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com">
-    <link rel="dns-prefetch" href="//s.w.org">
-
-    <script src="https://connect.facebook.net/en_US/sdk.js?hash=caa267e8b096bb1e7761f7600d880656&amp;ua=modern_es6" async="" crossorigin="anonymous"></script><script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v3.1"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">
-        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/paysonutah.org\/template/lib\/js\/wp-emoji-release.min.js?ver=4.7.18"}};
-        !function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
-    </script>
-
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
-    <link rel="stylesheet" id="foundation-icons-css" href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css?ver=1.8.1" type="text/css" media="all">
-    <link rel="stylesheet" id="jquery-bxslider-css" href="https://paysonutah.org/template/ext/bb-plugin/css/jquery.bxslider.css?ver=1.8.1" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css?ver=1.8.1" type="text/css" media="all">
-    <link rel="stylesheet" id="fl-builder-layout-7-css" href="https://paysonutah.org/storage/bb-plugin/cache/7-layout.css?ver=3aa732626d12444ce6cd4b0daf49c893" type="text/css" media="all">
-    <link rel="stylesheet" id="mono-social-icons-css" href="https://paysonutah.org/template_main/css/mono-social-icons.css?ver=1.5.1" type="text/css" media="all">
-    <link rel="stylesheet" id="jquery-magnificpopup-css" href="https://paysonutah.org/template/ext/bb-plugin/css/jquery.magnificpopup.css?ver=1.8.1" type="text/css" media="all">
-    <script type="text/javascript" src="https://paysonutah.org/template/lib/js/jquery/jquery.js?ver=1.12.4"></script>
-    <script type="text/javascript" src="https://paysonutah.org/template/lib/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
-    <link rel="https://api.w.org/" href="https://paysonutah.org/wp-json/">
-    <link rel="alternate" type="application/json+oembed" href="https://paysonutah.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpaysonutah.org%2F">
-    <link rel="alternate" type="text/xml+oembed" href="https://paysonutah.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpaysonutah.org%2F&amp;format=xml">
-    <style type="text/css">
-        .calnk a:hover {
-            background-position:0 0;
-            text-decoration:none;
-            color:#000000;
-            border-bottom:1px dotted #000000;
-        }
-        .calnk a:visited {
-            text-decoration:none;
-            color:#000000;
-            border-bottom:1px dotted #000000;
-        }
-        .calnk a {
-            text-decoration:none;
-            color:#000000;
-            border-bottom:1px dotted #000000;
-        }
-        .calnk a span {
-            display:none;
-        }
-        .calnk a:hover span {
-            color:#333333;
-            background:#F6F79B;
-            display:block;
-            position:absolute;
-            margin-top:1px;
-            padding:5px;
-            width:150px;
-            z-index:100;
-            line-height:1.2em;
-        }
-        .calendar-table {
-            border:0 !important;
-            width:100% !important;
-            border-collapse:separate !important;
-            border-spacing:2px !important;
-        }
-        .calendar-heading {
-            height:25px;
-            text-align:center;
-            background-color:#E4EBE3;
-        }
-        .calendar-next {
-            width:20%;
-            text-align:center;
-            border:none;
-        }
-        .calendar-prev {
-            width:20%;
-            text-align:center;
-            border:none;
-        }
-        .calendar-month {
-            width:60%;
-            text-align:center;
-            font-weight:bold;
-            border:none;
-        }
-        .normal-day-heading {
-            text-align:center;
-            width:25px;
-            height:25px;
-            font-size:0.8em;
-            border:1px solid #DFE6DE;
-            background-color:#EBF2EA;
-        }
-        .weekend-heading {
-            text-align:center;
-            width:25px;
-            height:25px;
-            font-size:0.8em;
-            border:1px solid #DFE6DE;
-            background-color:#EBF2EA;
-            color:#FF0000;
-        }
-        .day-with-date {
-            vertical-align:text-top;
-            text-align:left;
-            width:60px;
-            height:60px;
-            border:1px solid #DFE6DE;
-        }
-        .no-events {
-
-        }
-        .day-without-date {
-            width:60px;
-            height:60px;
-            border:1px solid #E9F0E8;
-        }
-        span.weekend {
-            color:#FF0000;
-        }
-        .current-day {
-            vertical-align:text-top;
-            text-align:left;
-            width:60px;
-            height:60px;
-            border:1px solid #BFBFBF;
-            background-color:#E4EBE3;
-        }
-        span.event {
-            font-size:0.75em;
-        }
-        .kjo-link {
-            font-size:0.75em;
-            text-align:center;
-        }
-        .calendar-date-switcher {
-            height:25px;
-            text-align:center;
-            border:1px solid #D6DED5;
-            background-color:#E4EBE3;
-        }
-        .calendar-date-switcher form {
-            margin:2px;
-        }
-        .calendar-date-switcher input {
-            border:1px #D6DED5 solid;
-            margin:0;
-        }
-        .calendar-date-switcher input[type=submit] {
-            padding:3px 10px;
-        }
-        .calendar-date-switcher select {
-            border:1px #D6DED5 solid;
-            margin:0;
-        }
-        .calnk a:hover span span.event-title {
-            padding:0;
-            text-align:center;
-            font-weight:bold;
-            font-size:1.2em;
-            margin-left:0px;
-        }
-        .calnk a:hover span span.event-title-break {
-            width:96%;
-            text-align:center;
-            height:1px;
-            margin-top:5px;
-            margin-right:2%;
-            padding:0;
-            background-color:#000000;
-            margin-left:0px;
-        }
-        .calnk a:hover span span.event-content-break {
-            width:96%;
-            text-align:center;
-            height:1px;
-            margin-top:5px;
-            margin-right:2%;
-            padding:0;
-            background-color:#000000;
-            margin-left:0px;
-        }
-        .page-upcoming-events {
-            font-size:80%;
-        }
-        .page-todays-events {
-            font-size:80%;
-        }
-        .calendar-table table,tbody,tr,td {
-            margin:0 !important;
-            padding:0 !important;
-        }
-        table.calendar-table {
-            margin-bottom:5px !important;
-        }
-        .cat-key {
-            width:100%;
-            margin-top:30px;
-            padding:5px;
-            border:0 !important;
-        }
-        .cal-separate {
-            border:0 !important;
-            margin-top:10px;
-        }
-        table.cat-key {
-            margin-top:5px !important;
-            border:1px solid #DFE6DE !important;
-            border-collapse:separate !important;
-            border-spacing:4px !important;
-            margin-left:2px !important;
-            width:99.5% !important;
-            margin-bottom:5px !important;
-        }
-        .minical-day {
-            background-color:#F6F79B;
-        }
-        .cat-key td {
-            border:0 !important;
-        }
-    </style>
-    <link rel="icon" href="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-32x32.png" sizes="32x32">
-    <link rel="icon" href="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-192x192.png" sizes="192x192">
-    <link rel="apple-touch-icon-precomposed" href="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-180x180.png">
-    <meta name="msapplication-TileImage" content="https://paysonutah.org/storage/2016/05/cropped-Logo125-1-1-270x270.png">
-    <link rel="stylesheet" href="https://paysonutah.org/storage/bb-theme/skin-5eb4d6e7783f0.css">
-    <style id="fl-theme-custom-css">
-        .fl-page-header-container>.fl-page-header-row>.fl-page-nav-col
-        {
-            width: 95%;
-        }
-        .fl-page-header-container>.fl-page-header-row>.fl-page-logo-col
-        {
-            width:5%;
-        }
-        header.fl-page-header
-        {
-            position: absolute;
-            z-index: 999;
-            width: 100%;
-            background: rgba(255,255,255, .9);
-        }
-
-        /*Editor Panel code*/
-        .e-panel
-        {
-            background: rgba(255,255,255, .5);
-        }
-        #d_pages
-        {
-            display: inline-block;
-        }
-        #d_pages>ul
-        {
-            display: none;
-            position: absolute;
-            background-color: white;
-        }
-        #d_pages:hover ul
-        {
-            padding: 10px;
-            display: block;
-            z-index: 9999;
-            list-style-position: inside;
-        }
-        #a_page_div, #d_pages, #set_title_div
-        {
-            display: inline-block;
-            padding: 0 5px;
-        }
-        #a_page_div>div, #set_title_div>div
-        {
-            position: absolute;
-            display: none;
-            background: white;
-        }
-        #a_page_div:hover>div, #set_title_div:hover>div
-        {
-            padding: 10px;
-            display: block;
-            z-index: 9999;
-        }
-
-        /*edit link remove*/
-        .post-edit-link
-        {
-            display: none;
-        }</style>
-    <script id="fl-theme-custom-js">
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-20900451-12', 'auto');
-        ga('send', 'pageview');
-
-    </script>
-    <link rel="stylesheet" href="https://paysonutah.org/template/main.css">
-    <style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
-        .fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-        .fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
-    </style>
-</head>
-
-<body class="home page-template-default page page-id-7 fl-builder fl-preset-default fl-full-width" itemscope="itemscope" itemtype="http://schema.org/WebPage">
-<div class="fl-page">
-    <header class="fl-page-header fl-page-header-fixed fl-page-nav-right">
-        <div class="fl-page-header-wrap">
-            <div class="fl-page-header-container container">
-                <div class="fl-page-header-row row">
-                    <div class="fl-page-logo-wrap col-md-3 col-sm-12">
-                        <div class="fl-page-header-logo">
-                            <a href="https://paysonutah.org"><img class="fl-logo-img" itemscope="" itemtype="http://schema.org/ImageObject" src="https://paysonutah.org/storage/2016/05/Logo125.png" data-retina="" alt="Payson"><meta itemprop="name" content="Payson"></a>
-                        </div>
-                    </div>
-                    <div class="fl-page-fixed-nav-wrap col-md-9 col-sm-12">
-                        <div class="fl-page-nav-wrap">
-                            <nav class="fl-page-nav fl-nav navbar navbar-default" role="navigation">
-                                <div class="fl-page-nav-collapse collapse navbar-collapse">
-                                    <ul id="menu-main-menu" class="nav navbar-nav navbar-right menu"><li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-605" aria-haspopup="true"><a href="https://paysonutah.org/government-transparency" style="width: auto;">Government &amp; Transparency</a>
-                                            <ul class="sub-menu mega-menu" style="left: 0px !important">
-                                                <li id="menu-item-615" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-615" aria-haspopup="true"><a href="https://paysonutah.org/government-transparency/elected-officials" style="width: auto;">Elected Officials</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-4383" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4383"><a href="https://paysonutah.org/government-transparency/elected-officials/mayor-bill-wright" style="width: auto;">Mayor Bill Wright</a></li>
-                                                        <li id="menu-item-631" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-631"><a href="https://paysonutah.org/government-transparency/elected-officials/linda-carter" style="width: auto;">Linda Carter</a></li>
-                                                        <li id="menu-item-4382" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4382"><a href="https://paysonutah.org/government-transparency/elected-officials/brett-christensen" style="width: auto;">Brett Christensen</a></li>
-                                                        <li id="menu-item-4384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4384"><a href="https://paysonutah.org/government-transparency/elected-officials/taresa-hiatt" style="width: auto;">Taresa Hiatt</a></li>
-                                                        <li id="menu-item-627" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-627"><a href="https://paysonutah.org/government-transparency/elected-officials/brian-hulet" style="width: auto;">Brian Hulet</a></li>
-                                                        <li id="menu-item-629" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-629"><a href="https://paysonutah.org/government-transparency/elected-officials/doug-welton" style="width: auto;">Doug Welton</a></li>
-                                                        <li id="menu-item-633" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-633"><a href="https://paysonutah.org/government-transparency/elected-officials/comments-to-council" style="width: auto;">Comments to Council</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-617" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-617" aria-haspopup="true"><a href="https://paysonutah.org/government-transparency/boards" style="width: auto;">Boards</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-635" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-635"><a href="https://paysonutah.org/government-transparency/boards/planning-commission" style="width: auto;">Planning Commission</a></li>
-                                                        <li id="menu-item-637" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-637"><a href="https://paysonutah.org/government-transparency/boards/economic-development-board" style="width: auto;">Economic Development Board</a></li>
-                                                        <li id="menu-item-639" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-639"><a href="https://paysonutah.org/government-transparency/boards/board-of-adjustments" style="width: auto;">Board of Adjustments</a></li>
-                                                        <li id="menu-item-1599" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1599"><a href="http://www.paysonlibrary.org" style="width: auto;">Library Board</a></li>
-                                                        <li id="menu-item-643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-643"><a href="https://paysonutah.org/government-transparency/boards/power-board" style="width: auto;">Power Board</a></li>
-                                                        <li id="menu-item-5305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5305"><a href="https://paysonutah.org/government-transparency/boards/parc-tax-committee" style="width: auto;">PARC Tax Committee</a></li>
-                                                        <li id="menu-item-645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-645"><a href="https://paysonutah.org/government-transparency/boards/youth-city-council" style="width: auto;">Youth City Council</a></li>
-                                                        <li id="menu-item-647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-647"><a href="https://paysonutah.org/government-transparency/boards/youth-court" style="width: auto;">Youth Court</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-619" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-619" aria-haspopup="true"><a href="https://paysonutah.org/government-transparency/transparency" style="width: auto;">Transparency</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-651" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-651"><a href="https://paysonutah.org/government-transparency/transparency/agendas-minutes-packets" style="width: auto;">Agendas &amp; Minutes</a></li>
-                                                        <li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="https://paysonutah.org/government-transparency/transparency/city-code" style="width: auto;">City Code</a></li>
-                                                        <li id="menu-item-2727" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2727"><a href="https://paysonutah.org/government-transparency/transparency/recorder" style="width: auto;">Recorder</a></li>
-                                                        <li id="menu-item-659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-659"><a href="https://paysonutah.org/government-transparency/transparency/state-transparency-website" style="width: auto;">State Transparency Website</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li id="menu-item-773" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-773" aria-haspopup="true"><a href="https://paysonutah.org/departments" style="width: auto;">Departments</a>
-                                            <ul class="sub-menu mega-menu" style="left: 0px !important">
-                                                <li id="menu-item-661" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-661" aria-haspopup="true"><a href="https://paysonutah.org/departments/administration" style="width: auto;">Administration</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-707" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-707"><a href="https://paysonutah.org/departments/administration/accounts-payable" style="width: auto;">Accounts Payable</a></li>
-                                                        <li id="menu-item-709" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-709"><a href="https://paysonutah.org/departments/administration/city-manager" style="width: auto;">City Manager</a></li>
-                                                        <li id="menu-item-711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-711"><a href="https://paysonutah.org/departments/administration/communities-that-care" style="width: auto;">Communities that Care</a></li>
-                                                        <li id="menu-item-713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-713"><a href="https://paysonutah.org/departments/administration/facilities" style="width: auto;">Facilities</a></li>
-                                                        <li id="menu-item-715" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-715"><a href="https://paysonutah.org/departments/administration/finance-recorder" style="width: auto;">Finance</a></li>
-                                                        <li id="menu-item-717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-717"><a href="https://paysonutah.org/departments/administration/it" style="width: auto;">IT</a></li>
-                                                        <li id="menu-item-4431" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4431"><a href="https://paysonutah.org/departments/administration/human-resources" style="width: auto;">Human Resources</a></li>
-                                                        <li id="menu-item-670" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-670"><a href="https://paysonutah.org/departments/legal" style="width: auto;">Legal</a></li>
-                                                        <li id="menu-item-719" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-719"><a href="https://paysonutah.org/departments/administration/treasurer" style="width: auto;">Treasurer</a></li>
-                                                        <li id="menu-item-721" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-721"><a href="https://paysonutah.org/departments/administration/utility-billing" style="width: auto;">Utility Billing</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-664" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-664" aria-haspopup="true"><a href="https://paysonutah.org/departments/community-services" style="width: auto;">Community Services</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-723" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-723"><a href="https://paysonutah.org/departments/community-services/cemetery" style="width: auto;">Cemetery</a></li>
-                                                        <li id="menu-item-725" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-725"><a href="https://paysonutah.org/departments/community-services/city-grounds" style="width: auto;">City Grounds</a></li>
-                                                        <li id="menu-item-2083" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2083"><a href="http://gladstan.com" style="width: auto;">Golf Course</a></li>
-                                                        <li id="menu-item-1598" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1598"><a href="http://www.paysonlibrary.org/" style="width: auto;">Library</a></li>
-                                                        <li id="menu-item-731" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-731"><a href="https://paysonutah.org/departments/community-services/parks" style="width: auto;">Parks</a></li>
-                                                        <li id="menu-item-733" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-733"><a href="https://paysonutah.org/departments/community-services/peteetneet" style="width: auto;">Peteetneet</a></li>
-                                                        <li id="menu-item-1797" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1797"><a href="https://paysonut.myrec.com/info/default.aspx" style="width: auto;">Pool</a></li>
-                                                        <li id="menu-item-1796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1796"><a href="https://paysonut.myrec.com/info/default.aspx" style="width: auto;">Recreation</a></li>
-                                                        <li id="menu-item-739" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-739"><a href="https://paysonutah.org/departments/community-services/senior-citizens" style="width: auto;">Senior Citizens</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-667" aria-haspopup="true"><a href="https://paysonutah.org/departments/development-services" style="width: auto;">Development Services</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-741" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-741"><a href="https://paysonutah.org/departments/development-services/building-inspection" style="width: auto;">Building Inspection</a></li>
-                                                        <li id="menu-item-1902" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1902"><a href="https://paysonutah.org/page/departments/development-services/engineering" style="width: auto;">Engineering</a></li>
-                                                        <li id="menu-item-2155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2155"><a href="https://paysonutah.org/departments/development-services/planning-and-zoning" style="width: auto;">Planning and Zoning</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-747" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-747" aria-haspopup="true"><a href="https://paysonutah.org/departments/legal/justice-court" style="width: auto;">Justice Court</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-749" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-749"><a href="https://paysonutah.org/departments/legal/prosecutor" style="width: auto;">Prosecutor</a></li>
-                                                        <li id="menu-item-751" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-751"><a href="https://paysonutah.org/departments/legal/victims-advocate" style="width: auto;">Victim’s Advocate</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-673" aria-haspopup="true"><a href="https://paysonutah.org/departments/public-safety" style="width: auto;">Public Safety</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-753" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-753"><a href="https://paysonutah.org/departments/public-safety/cert" style="width: auto;">CERT</a></li>
-                                                        <li id="menu-item-755" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-755"><a href="https://paysonutah.org/departments/public-safety/code-enforcement" style="width: auto;">Code Enforcement</a></li>
-                                                        <li id="menu-item-757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-757"><a href="https://paysonutah.org/departments/public-safety/fire" style="width: auto;">Payson Fire and Rescue</a></li>
-                                                        <li id="menu-item-759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-759"><a href="https://paysonutah.org/departments/public-safety/police" style="width: auto;">Police</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-676" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-676" aria-haspopup="true"><a href="https://paysonutah.org/departments/public-works" style="width: auto;">Public Works</a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-761" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-761"><a href="https://paysonutah.org/departments/public-works/power" style="width: auto;">Power</a></li>
-                                                        <li id="menu-item-763" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-763"><a href="https://paysonutah.org/departments/public-works/sewer" style="width: auto;">Sewer</a></li>
-                                                        <li id="menu-item-765" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-765"><a href="https://paysonutah.org/departments/public-works/solid-waste" style="width: auto;">Solid Waste</a></li>
-                                                        <li id="menu-item-767" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-767"><a href="https://paysonutah.org/departments/public-works/storm-drain" style="width: auto;">Storm Drain</a></li>
-                                                        <li id="menu-item-769" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-769"><a href="https://paysonutah.org/departments/public-works/streets" style="width: auto;">Streets</a></li>
-                                                        <li id="menu-item-771" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-771"><a href="https://paysonutah.org/departments/public-works/water" style="width: auto;">Water</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li id="menu-item-607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-607"><a href="https://paysonutah.org/applications-forms" style="width: auto;">Applications &amp; Forms</a></li>
-                                        <li id="menu-item-609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-609" aria-haspopup="true"><a href="https://paysonutah.org/events" style="width: auto;">Events</a>
-                                            <ul class="sub-menu mega-menu" style="left: 0px !important">
-                                                <li id="menu-item-3600" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3600"><a href="https://paysonutah.org/events/arbor-day" style="width: auto;">Arbor Day</a></li>
-                                                <li id="menu-item-679" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-679"><a href="https://paysonutah.org/events/calendar" style="width: auto;">Calendar</a></li>
-                                                <li id="menu-item-3601" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3601"><a href="https://paysonutah.org/events/peteetneet-antique-vintage-expo" style="width: auto;">Peteetneet Antique &amp; Vintage Expo</a></li>
-                                                <li id="menu-item-3602" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3602"><a href="https://paysonutah.org/events/peteetneet-dance-showcase" style="width: auto;">Peteetneet Dance Showcase</a></li>
-                                                <li id="menu-item-681" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-681"><a href="https://paysonutah.org/events/salmon-supper" style="width: auto;">Salmon Supper</a></li>
-                                                <li id="menu-item-3603" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3603"><a href="https://paysonutah.org/events/western-heritage-night" style="width: auto;">Western Heritage Night</a></li>
-                                                <li id="menu-item-3604" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3604"><a href="https://paysonutah.org/events/golden-onion-days" style="width: auto;">Golden Onion Days</a></li>
-                                                <li id="menu-item-3605" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3605"><a href="https://paysonutah.org/events/patriot-days" style="width: auto;">Patriot Day</a></li>
-                                                <li id="menu-item-683" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-683"><a href="https://paysonutah.org/events/scottish-festival" style="width: auto;">Scottish Festival</a></li>
-                                                <li id="menu-item-3606" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3606"><a href="https://paysonutah.org/events/veterans-day" style="width: auto;">Veterans Day</a></li>
-                                                <li id="menu-item-3607" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3607"><a href="https://paysonutah.org/events/peteetneet-santa-dash" style="width: auto;">Peteetneet Santa Dash</a></li>
-                                                <li id="menu-item-3608" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3608"><a href="https://paysonutah.org/events/peteeneet-christmas-boutique" style="width: auto;">Peteetneet Christmas Boutique/Train Show/Santa Claus</a></li>
-                                            </ul>
-                                        </li>
-                                        <li id="menu-item-611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-611" aria-haspopup="true"><a href="https://paysonutah.org/city-info" style="width: auto;">City Info</a>
-                                            <ul class="sub-menu mega-menu" style="left: 0px !important">
-                                                <li id="menu-item-685" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-685"><a href="https://paysonutah.org/city-info/business-list" style="width: auto;">Business List</a></li>
-                                                <li id="menu-item-689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689"><a href="https://paysonutah.org/city-info/contacts" style="width: auto;">Contacts</a></li>
-                                                <li id="menu-item-1615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1615"><a href="http://paysoncitychamber.com/" style="width: auto;">Chamber of Commerce</a></li>
-                                                <li id="menu-item-691" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-691"><a href="https://paysonutah.org/city-info/demographics" style="width: auto;">Demographics</a></li>
-                                                <li id="menu-item-4430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4430"><a href="https://paysonutah.org/departments/administration/human-resources" style="width: auto;">Employment</a></li>
-                                                <li id="menu-item-695" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-695"><a href="https://paysonutah.org/city-info/related-inks" style="width: auto;">Related Links</a></li>
-                                                <li id="menu-item-697" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-697"><a href="https://paysonutah.org/city-info/history" style="width: auto;">History</a></li>
-                                                <li id="menu-item-699" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-699"><a href="https://paysonutah.org/city-info/hours-of-operation" style="width: auto;">Hours of Operation</a></li>
-                                                <li id="menu-item-701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-701"><a href="https://paysonutah.org/city-info/newsletter" style="width: auto;">Newsletter</a></li>
-                                                <li id="menu-item-703" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-703"><a href="https://paysonutah.org/city-info/restaurants" style="width: auto;">Restaurants</a></li>
-                                                <li id="menu-item-705" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-705"><a href="https://paysonutah.org/city-info/schools" style="width: auto;">Schools</a></li>
-                                            </ul>
-                                        </li>
-                                        <li id="menu-item-4354" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4354"><a href="http://paysonutah.maps.arcgis.com/apps/webappviewer/index.html?id=a6c7b9025e0f4f868b3e4f29a3f9a479" style="width: auto;">Maps &amp; GIS</a></li>
-                                    </ul>							</div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header><!-- .fl-page-header-fixed --><header class="fl-page-header fl-page-header-primary fl-page-nav-right fl-page-nav-toggle-button" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-        <div class="fl-page-header-wrap">
-            <div class="fl-page-header-container container">
-                <div class="fl-page-header-row row">
-                    <div class="col-md-4 col-sm-12 fl-page-header-logo-col">
-                        <div class="fl-page-header-logo" itemscope="itemscope" itemtype="http://schema.org/Organization">
-                            <a href="https://paysonutah.org" itemprop="url"><img class="fl-logo-img" itemscope="" itemtype="http://schema.org/ImageObject" src="https://paysonutah.org/storage/2016/05/Logo125.png" data-retina="" alt="Payson"><meta itemprop="name" content="Payson"></a>
-                        </div>
-                    </div>
-                    <div class="fl-page-nav-col col-md-8 col-sm-12">
-                        <div class="fl-page-nav-wrap">
-                            <nav class="fl-page-nav fl-nav navbar navbar-default" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".fl-page-nav-collapse">
-                                    <span>Menu</span>
-                                </button>
-                                <div class="fl-page-nav-collapse collapse navbar-collapse">
-                                    <div class="fl-page-nav-search">
-                                        <a href="javascript:void(0);" class="fa fa-search"></a>
-                                        <form method="get" role="search" action="https://paysonutah.org" title="Type and press Enter to search.">
-                                            <input type="text" class="fl-search-input" name="s" value="Search" onfocus="if (this.value == 'Search') { this.value = ''; }" onblur="if (this.value == '') this.value='Search';">
-                                        </form>
-                                    </div><ul id="menu-main-menu-1" class="nav navbar-nav navbar-right menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-605" aria-haspopup="true"><a href="https://paysonutah.org/government-transparency" style="width: auto;">Government &amp; Transparency</a>
-                                            <ul class="sub-menu mega-menu" style="left: 0px !important">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-615" aria-haspopup="true"><a href="https://paysonutah.org/government-transparency/elected-officials" style="width: auto;">Elected Officials</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4383"><a href="https://paysonutah.org/government-transparency/elected-officials/mayor-bill-wright" style="width: auto;">Mayor Bill Wright</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-631"><a href="https://paysonutah.org/government-transparency/elected-officials/linda-carter" style="width: auto;">Linda Carter</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4382"><a href="https://paysonutah.org/government-transparency/elected-officials/brett-christensen" style="width: auto;">Brett Christensen</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4384"><a href="https://paysonutah.org/government-transparency/elected-officials/taresa-hiatt" style="width: auto;">Taresa Hiatt</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-627"><a href="https://paysonutah.org/government-transparency/elected-officials/brian-hulet" style="width: auto;">Brian Hulet</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-629"><a href="https://paysonutah.org/government-transparency/elected-officials/doug-welton" style="width: auto;">Doug Welton</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-633"><a href="https://paysonutah.org/government-transparency/elected-officials/comments-to-council" style="width: auto;">Comments to Council</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-617" aria-haspopup="true"><a href="https://paysonutah.org/government-transparency/boards" style="width: auto;">Boards</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-635"><a href="https://paysonutah.org/government-transparency/boards/planning-commission" style="width: auto;">Planning Commission</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-637"><a href="https://paysonutah.org/government-transparency/boards/economic-development-board" style="width: auto;">Economic Development Board</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-639"><a href="https://paysonutah.org/government-transparency/boards/board-of-adjustments" style="width: auto;">Board of Adjustments</a></li>
-                                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1599"><a href="http://www.paysonlibrary.org" style="width: auto;">Library Board</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-643"><a href="https://paysonutah.org/government-transparency/boards/power-board" style="width: auto;">Power Board</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5305"><a href="https://paysonutah.org/government-transparency/boards/parc-tax-committee" style="width: auto;">PARC Tax Committee</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-645"><a href="https://paysonutah.org/government-transparency/boards/youth-city-council" style="width: auto;">Youth City Council</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-647"><a href="https://paysonutah.org/government-transparency/boards/youth-court" style="width: auto;">Youth Court</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-619" aria-haspopup="true"><a href="https://paysonutah.org/government-transparency/transparency" style="width: auto;">Transparency</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-651"><a href="https://paysonutah.org/government-transparency/transparency/agendas-minutes-packets" style="width: auto;">Agendas &amp; Minutes</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="https://paysonutah.org/government-transparency/transparency/city-code" style="width: auto;">City Code</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2727"><a href="https://paysonutah.org/government-transparency/transparency/recorder" style="width: auto;">Recorder</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-659"><a href="https://paysonutah.org/government-transparency/transparency/state-transparency-website" style="width: auto;">State Transparency Website</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-773" aria-haspopup="true"><a href="https://paysonutah.org/departments" style="width: auto;">Departments</a>
-                                            <ul class="sub-menu mega-menu" style="left: -220.671875px !important">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-661" aria-haspopup="true"><a href="https://paysonutah.org/departments/administration" style="width: auto;">Administration</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-707"><a href="https://paysonutah.org/departments/administration/accounts-payable" style="width: auto;">Accounts Payable</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-709"><a href="https://paysonutah.org/departments/administration/city-manager" style="width: auto;">City Manager</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-711"><a href="https://paysonutah.org/departments/administration/communities-that-care" style="width: auto;">Communities that Care</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-713"><a href="https://paysonutah.org/departments/administration/facilities" style="width: auto;">Facilities</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-715"><a href="https://paysonutah.org/departments/administration/finance-recorder" style="width: auto;">Finance</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-717"><a href="https://paysonutah.org/departments/administration/it" style="width: auto;">IT</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4431"><a href="https://paysonutah.org/departments/administration/human-resources" style="width: auto;">Human Resources</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-670"><a href="https://paysonutah.org/departments/legal" style="width: auto;">Legal</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-719"><a href="https://paysonutah.org/departments/administration/treasurer" style="width: auto;">Treasurer</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-721"><a href="https://paysonutah.org/departments/administration/utility-billing" style="width: auto;">Utility Billing</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-664" aria-haspopup="true"><a href="https://paysonutah.org/departments/community-services" style="width: auto;">Community Services</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-723"><a href="https://paysonutah.org/departments/community-services/cemetery" style="width: auto;">Cemetery</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-725"><a href="https://paysonutah.org/departments/community-services/city-grounds" style="width: auto;">City Grounds</a></li>
-                                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2083"><a href="http://gladstan.com" style="width: auto;">Golf Course</a></li>
-                                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1598"><a href="http://www.paysonlibrary.org/" style="width: auto;">Library</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-731"><a href="https://paysonutah.org/departments/community-services/parks" style="width: auto;">Parks</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-733"><a href="https://paysonutah.org/departments/community-services/peteetneet" style="width: auto;">Peteetneet</a></li>
-                                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1797"><a href="https://paysonut.myrec.com/info/default.aspx" style="width: auto;">Pool</a></li>
-                                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1796"><a href="https://paysonut.myrec.com/info/default.aspx" style="width: auto;">Recreation</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-739"><a href="https://paysonutah.org/departments/community-services/senior-citizens" style="width: auto;">Senior Citizens</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-667" aria-haspopup="true"><a href="https://paysonutah.org/departments/development-services" style="width: auto;">Development Services</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-741"><a href="https://paysonutah.org/departments/development-services/building-inspection" style="width: auto;">Building Inspection</a></li>
-                                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1902"><a href="https://paysonutah.org/page/departments/development-services/engineering" style="width: auto;">Engineering</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2155"><a href="https://paysonutah.org/departments/development-services/planning-and-zoning" style="width: auto;">Planning and Zoning</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-747" aria-haspopup="true"><a href="https://paysonutah.org/departments/legal/justice-court" style="width: auto;">Justice Court</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-749"><a href="https://paysonutah.org/departments/legal/prosecutor" style="width: auto;">Prosecutor</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-751"><a href="https://paysonutah.org/departments/legal/victims-advocate" style="width: auto;">Victim’s Advocate</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-673" aria-haspopup="true"><a href="https://paysonutah.org/departments/public-safety" style="width: auto;">Public Safety</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-753"><a href="https://paysonutah.org/departments/public-safety/cert" style="width: auto;">CERT</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-755"><a href="https://paysonutah.org/departments/public-safety/code-enforcement" style="width: auto;">Code Enforcement</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-757"><a href="https://paysonutah.org/departments/public-safety/fire" style="width: auto;">Payson Fire and Rescue</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-759"><a href="https://paysonutah.org/departments/public-safety/police" style="width: auto;">Police</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-676" aria-haspopup="true"><a href="https://paysonutah.org/departments/public-works" style="width: auto;">Public Works</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-761"><a href="https://paysonutah.org/departments/public-works/power" style="width: auto;">Power</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-763"><a href="https://paysonutah.org/departments/public-works/sewer" style="width: auto;">Sewer</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-765"><a href="https://paysonutah.org/departments/public-works/solid-waste" style="width: auto;">Solid Waste</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-767"><a href="https://paysonutah.org/departments/public-works/storm-drain" style="width: auto;">Storm Drain</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-769"><a href="https://paysonutah.org/departments/public-works/streets" style="width: auto;">Streets</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-771"><a href="https://paysonutah.org/departments/public-works/water" style="width: auto;">Water</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-607"><a href="https://paysonutah.org/applications-forms" style="width: auto;">Applications &amp; Forms</a></li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-609" aria-haspopup="true"><a href="https://paysonutah.org/events" style="width: auto;">Events</a>
-                                            <ul class="sub-menu mega-menu" style="left: -498.96875px !important">
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3600"><a href="https://paysonutah.org/events/arbor-day" style="width: auto;">Arbor Day</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-679"><a href="https://paysonutah.org/events/calendar" style="width: auto;">Calendar</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3601"><a href="https://paysonutah.org/events/peteetneet-antique-vintage-expo" style="width: auto;">Peteetneet Antique &amp; Vintage Expo</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3602"><a href="https://paysonutah.org/events/peteetneet-dance-showcase" style="width: auto;">Peteetneet Dance Showcase</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-681"><a href="https://paysonutah.org/events/salmon-supper" style="width: auto;">Salmon Supper</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3603"><a href="https://paysonutah.org/events/western-heritage-night" style="width: auto;">Western Heritage Night</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3604"><a href="https://paysonutah.org/events/golden-onion-days" style="width: auto;">Golden Onion Days</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3605"><a href="https://paysonutah.org/events/patriot-days" style="width: auto;">Patriot Day</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-683"><a href="https://paysonutah.org/events/scottish-festival" style="width: auto;">Scottish Festival</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3606"><a href="https://paysonutah.org/events/veterans-day" style="width: auto;">Veterans Day</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3607"><a href="https://paysonutah.org/events/peteetneet-santa-dash" style="width: auto;">Peteetneet Santa Dash</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3608"><a href="https://paysonutah.org/events/peteeneet-christmas-boutique" style="width: auto;">Peteetneet Christmas Boutique/Train Show/Santa Claus</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-611" aria-haspopup="true"><a href="https://paysonutah.org/city-info" style="width: auto;">City Info</a>
-                                            <ul class="sub-menu mega-menu" style="left: -562.4375px !important">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-685"><a href="https://paysonutah.org/city-info/business-list" style="width: auto;">Business List</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-689"><a href="https://paysonutah.org/city-info/contacts" style="width: auto;">Contacts</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1615"><a href="http://paysoncitychamber.com/" style="width: auto;">Chamber of Commerce</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-691"><a href="https://paysonutah.org/city-info/demographics" style="width: auto;">Demographics</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4430"><a href="https://paysonutah.org/departments/administration/human-resources" style="width: auto;">Employment</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-695"><a href="https://paysonutah.org/city-info/related-inks" style="width: auto;">Related Links</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-697"><a href="https://paysonutah.org/city-info/history" style="width: auto;">History</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-699"><a href="https://paysonutah.org/city-info/hours-of-operation" style="width: auto;">Hours of Operation</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-701"><a href="https://paysonutah.org/city-info/newsletter" style="width: auto;">Newsletter</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-703"><a href="https://paysonutah.org/city-info/restaurants" style="width: auto;">Restaurants</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-705"><a href="https://paysonutah.org/city-info/schools" style="width: auto;">Schools</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4354"><a href="http://paysonutah.maps.arcgis.com/apps/webappviewer/index.html?id=a6c7b9025e0f4f868b3e4f29a3f9a479" style="width: auto;">Maps &amp; GIS</a></li>
-                                    </ul>							</div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header><!-- .fl-page-header -->	<div class="fl-page-content" itemprop="mainContentOfPage">
-
-
+@section('content')
+    <div class="fl-page-content" itemprop="mainContentOfPage">
         <div class="fl-content-full container">
             <div class="row">
                 <div class="fl-content col-md-12">
                     <article class="fl-post post-7 page type-page status-publish hentry" id="fl-post-7" itemscope="itemscope" itemtype="http://schema.org/CreativeWork">
-
                         <header class="fl-post-header">
                             <h1 class="fl-post-title" itemprop="headline">Home</h1>
                         </header><!-- .fl-post-header -->
 
                         <div class="fl-post-content clearfix" itemprop="text">
-                            <div class="fl-builder-content fl-builder-content-7 fl-builder-global-templates-locked" data-post-id="7"><div class="fl-row fl-row-full-width fl-row-bg-color fl-node-574df37dd08b2" data-node="574df37dd08b2">
-                                    <div class="fl-row-content-wrap">
-                                        <div class="fl-row-content fl-row-full-width fl-node-content">
+                            <div class="fl-builder-content fl-builder-content-7 fl-builder-global-templates-locked" data-post-id="7">
+                                @include('payson.home.carousel')
 
-                                            <div class="fl-col-group fl-node-574df37dd0d4d" data-node="574df37dd0d4d">
-                                                <div class="fl-col fl-node-574df37dd0b61" data-node="574df37dd0b61" style="width: 100%;">
-                                                    <div class="fl-col-content fl-node-content">
-                                                        <div class="fl-module fl-module-content-slider fl-node-574df5b90f1e0" data-node="574df5b90f1e0" data-animation-delay="0.0">
-                                                            <div class="fl-module-content fl-node-content">
-                                                                <div class="fl-content-slider">
-                                                                    <div class="bx-wrapper" style="max-width: 100%;"><div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 600px;"><div class="fl-content-slider-wrapper fl-content-slider-loaded" style="width: 5215%; position: relative; transition-duration: 0.5s; transform: translate3d(-5480px, 0px, 0px);"><div class="fl-slide fl-slide-4 fl-slide-text-left bx-clone" style="float: left; list-style: none; position: relative; width: 1370px;" aria-hidden="true">
-                                                                                    <div class="fl-slide-mobile-photo"><img class="fl-slide-mobile-photo-img wp-image-1333" src="https://paysonutah.org/storage/2016/05/56-1.jpg" alt="" srcset="https://paysonutah.org/storage/2016/05/56-1.jpg 1100w, https://paysonutah.org/storage/2016/05/56-1-300x223.jpg 300w, https://paysonutah.org/storage/2016/05/56-1-768x570.jpg 768w, https://paysonutah.org/storage/2016/05/56-1-1024x761.jpg 1024w" sizes="(max-width: 1100px) 100vw, 1100px"></div><div class="fl-slide-bg-photo" style="background-image: url(https://paysonutah.org/storage/2016/05/56-1.jpg);"></div><a class="fl-slide-bg-link" href="http://gladstan.com" target="_blank"></a>			<div class="fl-slide-foreground clearfix">
-                                                                                        <div class="fl-slide-content-wrap"><div class="fl-slide-content"><h2 class="fl-slide-title">Golf!</h2><div class="fl-slide-text"><p><strong>Gladstan Golf Course</strong> is located in Payson just 15 minutes south of Provo, Utah and boasts beautiful rolling fairways, plentiful bunkers, water and amazing views. Enjoying eating at the Gladstan Grill before or after golfing. The food is delicious and the view is wonderful if you sit on the deck and look over the valley!</p></div><div class="fl-slide-cta-button"><div class="fl-button-wrap fl-button-width-auto fl-button-has-icon">
-                                                                                                        <a href="http://gladstan.com" target="_blank" class="fl-button" role="button">
-                                                                                                            <i class="fl-button-icon fl-button-icon-before fa fi-flag"></i>
-                                                                                                            <span class="fl-button-text">Book a Tee Time!</span>
-                                                                                                        </a>
-                                                                                                    </div></div></div></div>			</div>
-                                                                                </div>
-                                                                                <div class="fl-slide fl-slide-0 fl-slide-text-right" style="float: left; list-style: none; position: relative; width: 1370px;" aria-hidden="true">
-                                                                                    <div class="fl-slide-mobile-photo"><img class="fl-slide-mobile-photo-img wp-image-3272" src="https://paysonutah.org/storage/2016/05/Hancock-Scene2.jpg" alt="" srcset="https://paysonutah.org/storage/2016/05/Hancock-Scene2.jpg 4288w, https://paysonutah.org/storage/2016/05/Hancock-Scene2-300x199.jpg 300w, https://paysonutah.org/storage/2016/05/Hancock-Scene2-768x510.jpg 768w, https://paysonutah.org/storage/2016/05/Hancock-Scene2-1024x680.jpg 1024w" sizes="(max-width: 4288px) 100vw, 4288px"></div><div class="fl-slide-bg-photo" style="background-image: url(https://paysonutah.org/storage/2016/05/Hancock-Scene2.jpg);"></div>			<div class="fl-slide-foreground clearfix">
-                                                                                        <div class="fl-slide-content-wrap"><div class="fl-slide-content"><h2 class="fl-slide-title">Home To Adventure</h2><div class="fl-slide-text"><p>&nbsp;You’ll enjoy our city’s rich history, opportunities for business growth, gorgeous mountain range…not to mention that the recreation in Payson is unsurpassed.&nbsp;You will find your Home to Adventure here&nbsp;in Payson.</p></div></div></div>			</div>
-                                                                                </div>
-                                                                                <div class="fl-slide fl-slide-1 fl-slide-text-left" style="float: left; list-style: none; position: relative; width: 1370px;" aria-hidden="true">
-                                                                                    <div class="fl-slide-mobile-photo"><img class="fl-slide-mobile-photo-img wp-image-1606" src="https://paysonutah.org/storage/2016/05/3-2.jpg" alt="" srcset="https://paysonutah.org/storage/2016/05/3-2.jpg 1910w, https://paysonutah.org/storage/2016/05/3-2-300x200.jpg 300w, https://paysonutah.org/storage/2016/05/3-2-768x512.jpg 768w, https://paysonutah.org/storage/2016/05/3-2-1024x682.jpg 1024w" sizes="(max-width: 1910px) 100vw, 1910px"></div><div class="fl-slide-bg-photo" style="background-image: url(https://paysonutah.org/storage/2016/05/3-2.jpg);"></div>			<div class="fl-slide-foreground clearfix">
-                                                                                        <div class="fl-slide-content-wrap"><div class="fl-slide-content"><h2 class="fl-slide-title">Education</h2><div class="fl-slide-text"><p>Education is key in providing opportunity for growth. Nebo School District provides the public education for school-aged children. Payson is also conveniently located to many options for institutions of higher learning.</p></div></div></div>			</div>
-                                                                                </div>
-                                                                                <div class="fl-slide fl-slide-2 fl-slide-text-left" style="float: left; list-style: none; position: relative; width: 1370px;" aria-hidden="true">
-                                                                                    <div class="fl-slide-mobile-photo"><img class="fl-slide-mobile-photo-img wp-image-1174" src="https://paysonutah.org/storage/2016/05/PaysonScenes68.jpg" alt="" srcset="https://paysonutah.org/storage/2016/05/PaysonScenes68.jpg 1100w, https://paysonutah.org/storage/2016/05/PaysonScenes68-199x300.jpg 199w, https://paysonutah.org/storage/2016/05/PaysonScenes68-768x1160.jpg 768w, https://paysonutah.org/storage/2016/05/PaysonScenes68-678x1024.jpg 678w" sizes="(max-width: 1100px) 100vw, 1100px"></div><div class="fl-slide-bg-photo" style="background-image: url(https://paysonutah.org/storage/2016/05/PaysonScenes68.jpg);"></div>			<div class="fl-slide-foreground clearfix">
-                                                                                        <div class="fl-slide-content-wrap"><div class="fl-slide-content"><h2 class="fl-slide-title">Home to Adventure</h2><div class="fl-slide-text"><p>Experience the hometown charm and celebrations</p></div></div></div>			</div>
-                                                                                </div>
-                                                                                <div class="fl-slide fl-slide-3 fl-slide-text-left" style="float: left; list-style: none; position: relative; width: 1370px;" aria-hidden="false">
-                                                                                    <div class="fl-slide-mobile-photo"><img class="fl-slide-mobile-photo-img wp-image-1608" src="https://paysonutah.org/storage/2016/05/business1.jpg" alt="" srcset="https://paysonutah.org/storage/2016/05/business1.jpg 1910w, https://paysonutah.org/storage/2016/05/business1-300x200.jpg 300w, https://paysonutah.org/storage/2016/05/business1-768x512.jpg 768w, https://paysonutah.org/storage/2016/05/business1-1024x682.jpg 1024w" sizes="(max-width: 1910px) 100vw, 1910px"></div><div class="fl-slide-bg-photo" style="background-image: url(https://paysonutah.org/storage/2016/05/business1.jpg);"></div>			<div class="fl-slide-foreground clearfix">
-                                                                                        <div class="fl-slide-content-wrap"><div class="fl-slide-content"><h2 class="fl-slide-title">Business</h2><div class="fl-slide-text"><p>Whether you are looking for an industrial or commercial business area, Payson has several options. The Payson Business Park, located adjacent to Interstate 15, provides a corporate atmosphere and is a Utah State Economic Development Area.</p></div></div></div>			</div>
-                                                                                </div>
-                                                                                <div class="fl-slide fl-slide-4 fl-slide-text-left" style="float: left; list-style: none; position: relative; width: 1370px;" aria-hidden="true">
-                                                                                    <div class="fl-slide-mobile-photo"><img class="fl-slide-mobile-photo-img wp-image-1333" src="https://paysonutah.org/storage/2016/05/56-1.jpg" alt="" srcset="https://paysonutah.org/storage/2016/05/56-1.jpg 1100w, https://paysonutah.org/storage/2016/05/56-1-300x223.jpg 300w, https://paysonutah.org/storage/2016/05/56-1-768x570.jpg 768w, https://paysonutah.org/storage/2016/05/56-1-1024x761.jpg 1024w" sizes="(max-width: 1100px) 100vw, 1100px"></div><div class="fl-slide-bg-photo" style="background-image: url(https://paysonutah.org/storage/2016/05/56-1.jpg);"></div><a class="fl-slide-bg-link" href="http://gladstan.com" target="_blank"></a>			<div class="fl-slide-foreground clearfix">
-                                                                                        <div class="fl-slide-content-wrap"><div class="fl-slide-content"><h2 class="fl-slide-title">Golf!</h2><div class="fl-slide-text"><p><strong>Gladstan Golf Course</strong> is located in Payson just 15 minutes south of Provo, Utah and boasts beautiful rolling fairways, plentiful bunkers, water and amazing views. Enjoying eating at the Gladstan Grill before or after golfing. The food is delicious and the view is wonderful if you sit on the deck and look over the valley!</p></div><div class="fl-slide-cta-button"><div class="fl-button-wrap fl-button-width-auto fl-button-has-icon">
-                                                                                                        <a href="http://gladstan.com" target="_blank" class="fl-button" role="button">
-                                                                                                            <i class="fl-button-icon fl-button-icon-before fa fi-flag"></i>
-                                                                                                            <span class="fl-button-text">Book a Tee Time!</span>
-                                                                                                        </a>
-                                                                                                    </div></div></div></div>			</div>
-                                                                                </div>
-                                                                                <div class="fl-slide fl-slide-0 fl-slide-text-right bx-clone" style="float: left; list-style: none; position: relative; width: 1370px;" aria-hidden="true">
-                                                                                    <div class="fl-slide-mobile-photo"><img class="fl-slide-mobile-photo-img wp-image-3272" src="https://paysonutah.org/storage/2016/05/Hancock-Scene2.jpg" alt="" srcset="https://paysonutah.org/storage/2016/05/Hancock-Scene2.jpg 4288w, https://paysonutah.org/storage/2016/05/Hancock-Scene2-300x199.jpg 300w, https://paysonutah.org/storage/2016/05/Hancock-Scene2-768x510.jpg 768w, https://paysonutah.org/storage/2016/05/Hancock-Scene2-1024x680.jpg 1024w" sizes="(max-width: 4288px) 100vw, 4288px"></div><div class="fl-slide-bg-photo" style="background-image: url(https://paysonutah.org/storage/2016/05/Hancock-Scene2.jpg);"></div>			<div class="fl-slide-foreground clearfix">
-                                                                                        <div class="fl-slide-content-wrap"><div class="fl-slide-content"><h2 class="fl-slide-title">Home To Adventure</h2><div class="fl-slide-text"><p>&nbsp;You’ll enjoy our city’s rich history, opportunities for business growth, gorgeous mountain range…not to mention that the recreation in Payson is unsurpassed.&nbsp;You will find your Home to Adventure here&nbsp;in Payson.</p></div></div></div>			</div>
-                                                                                </div></div></div><div class="bx-controls bx-has-pager"><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link">1</a></div><div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div><div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div><div class="bx-pager-item"><a href="" data-slide-index="3" class="bx-pager-link active">4</a></div><div class="bx-pager-item"><a href="" data-slide-index="4" class="bx-pager-link">5</a></div></div></div></div>
-                                                                    <div class="fl-clear"></div>
-                                                                </div>	</div>
-                                                        </div>	</div>
-                                                </div>	</div>
-                                        </div>
-                                    </div>
-                                </div><div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-5baa609cce69f" data-node="5baa609cce69f">
+                                <!-- Silly Grid with Pics & Stuff -->
+                                <div class="fl-row fl-row-fixed-width fl-row-bg-none">
                                     <div class="fl-row-content-wrap">
                                         <div class="fl-row-content fl-row-fixed-width fl-node-content">
 
@@ -735,7 +49,10 @@
                                                 </div>	</div>
                                         </div>
                                     </div>
-                                </div><div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-59492e765bf6a" data-node="59492e765bf6a">
+                                </div>
+
+                                <!-- COVIDz 1 -->
+                                <div class="fl-row fl-row-fixed-width fl-row-bg-none">
                                     <div class="fl-row-content-wrap">
                                         <div class="fl-row-content fl-row-fixed-width fl-node-content">
 
@@ -788,7 +105,10 @@
                                                 </div>	</div>
                                         </div>
                                     </div>
-                                </div><div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-5eac6183bd6c6" data-node="5eac6183bd6c6">
+                                </div>
+
+                                <!-- COVIDz 2-->
+                                <div class="fl-row fl-row-fixed-width fl-row-bg-none">
                                     <div class="fl-row-content-wrap">
                                         <div class="fl-row-content fl-row-fixed-width fl-node-content">
 
@@ -983,7 +303,10 @@
                                                 </div>	</div>
                                         </div>
                                     </div>
-                                </div><div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-574df37dd0f26" data-node="574df37dd0f26">
+                                </div>
+
+                                <!-- News & Events Row -->
+                                <div class="fl-row fl-row-fixed-width fl-row-bg-none">
                                     <div class="fl-row-content-wrap">
                                         <div class="fl-row-content fl-row-fixed-width fl-node-content">
 
@@ -1046,7 +369,10 @@
                                                 </div>	</div>
                                         </div>
                                     </div>
-                                </div><div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-5e6adce6ee7f3" data-node="5e6adce6ee7f3">
+                                </div>
+
+                                <!-- Announcements Row (2-grid, 1 row)  -->
+                                <div class="fl-row fl-row-fixed-width fl-row-bg-none">
                                     <div class="fl-row-content-wrap">
                                         <div class="fl-row-content fl-row-fixed-width fl-node-content">
 
@@ -1110,7 +436,10 @@
                                                 </div>	</div>
                                         </div>
                                     </div>
-                                </div><div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-59492ec56434a" data-node="59492ec56434a">
+                                </div>
+
+                                <!-- What Looks Like An RSS Feed (6-grid, 3 rows)-->
+                                <div class="fl-row fl-row-fixed-width fl-row-bg-none">
                                     <div class="fl-row-content-wrap">
                                         <div class="fl-row-content fl-row-fixed-width fl-node-content">
 
@@ -1231,249 +560,32 @@
                                                 </div>	</div>
                                         </div>
                                     </div>
-                                </div><div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-5e432af14da20" data-node="5e432af14da20">
+                                </div>
+
+                                <!-- Bottom Row (4-grid, 1 row)  -->
+                                @if($bottom_copy = \AnchorCMS\Copy::_getVerbiageforAPage('/'))
+                                <div class="fl-row fl-row-fixed-width fl-row-bg-none">
                                     <div class="fl-row-content-wrap">
                                         <div class="fl-row-content fl-row-fixed-width fl-node-content">
-
                                             <div class="fl-col-group fl-node-5e432af14e15e" data-node="5e432af14e15e">
-                                                <div class="fl-col fl-node-5e432af14e1a0 fl-col-small" data-node="5e432af14e1a0" style="width: 25%;">
-                                                    <div class="fl-col-content fl-node-content">
-                                                        <div class="fl-module fl-module-callout fl-node-5e432af14e1df" data-node="5e432af14e1df" data-animation-delay="0.0">
-                                                            <div class="fl-module-content fl-node-content">
-                                                                <div class="fl-callout fl-callout-left fl-callout-has-photo fl-callout-photo-above-title">
-                                                                    <div class="fl-callout-content">
-                                                                        <div class="fl-callout-photo"><div class="fl-photo fl-photo-crop-square fl-photo-align-center" itemscope="" itemtype="http://schema.org/ImageObject">
-                                                                                <div class="fl-photo-content fl-photo-img-png">
-                                                                                    <a href="https://paysonutah.org/departments/public-works/curbside-recycling?fl_builder" target="_blank" itemprop="url">
-                                                                                        <img class="fl-photo-img wp-image-5878 size-thumbnail" src="https://paysonutah.org/storage/bb-plugin/cache/recycling-logo-150x150-square.png" alt="recycling logo" itemprop="image">
-                                                                                    </a>
-
-                                                                                </div>
-                                                                            </div></div><h3 class="fl-callout-title"><span><a href="https://paysonutah.org/departments/public-works/curbside-recycling?fl_builder" target="_blank" class="fl-callout-title-link">Curbside Recycling</a></span></h3>		<div class="fl-callout-text-wrap">
-                                                                            <div class="fl-callout-text"><p>Click here for the 2020 recycling calendar.&nbsp;</p></div>		</div>
-                                                                    </div>
-                                                                </div>	</div>
-                                                        </div>	</div>
-                                                </div>			<div class="fl-col fl-node-5e432af14e21d fl-col-small" data-node="5e432af14e21d" style="width: 25%;">
-                                                    <div class="fl-col-content fl-node-content">
-                                                        <div class="fl-module fl-module-callout fl-node-5e432af14e25b" data-node="5e432af14e25b" data-animation-delay="0.0">
-                                                            <div class="fl-module-content fl-node-content">
-                                                                <div class="fl-callout fl-callout-left fl-callout-has-photo fl-callout-photo-above-title">
-                                                                    <div class="fl-callout-content">
-                                                                        <div class="fl-callout-photo"><div class="fl-photo fl-photo-crop-square fl-photo-align-center" itemscope="" itemtype="http://schema.org/ImageObject">
-                                                                                <div class="fl-photo-content fl-photo-img-jpg">
-                                                                                    <a href="https://paysonut.myrec.com/info/default.aspx" target="_blank" itemprop="url">
-                                                                                        <img class="fl-photo-img wp-image-4057 size-full" src="https://paysonutah.org/storage/bb-plugin/cache/logo-white-background-square.jpg" alt="logo white background" itemprop="image">
-                                                                                    </a>
-
-                                                                                </div>
-                                                                            </div></div><h3 class="fl-callout-title"><span><a href="https://paysonut.myrec.com/info/default.aspx" target="_blank" class="fl-callout-title-link">Recreation Department</a></span></h3>		<div class="fl-callout-text-wrap">
-                                                                            <div class="fl-callout-text"><p>Visit the Recreation Department website to sign up for sports and other recreational activities.</p></div>		</div>
-                                                                    </div>
-                                                                </div>	</div>
-                                                        </div>	</div>
-                                                </div>			<div class="fl-col fl-node-5e432af14e29c fl-col-small" data-node="5e432af14e29c" style="width: 25%;">
-                                                    <div class="fl-col-content fl-node-content">
-                                                        <div class="fl-module fl-module-callout fl-node-5e432af14e2dd" data-node="5e432af14e2dd" data-animation-delay="0.0">
-                                                            <div class="fl-module-content fl-node-content">
-                                                                <div class="fl-callout fl-callout-left fl-callout-has-photo fl-callout-photo-above-title">
-                                                                    <div class="fl-callout-content">
-                                                                        <div class="fl-callout-photo"><div class="fl-photo fl-photo-align-center" itemscope="" itemtype="http://schema.org/ImageObject">
-                                                                                <div class="fl-photo-content fl-photo-img-jpg">
-                                                                                    <a href="http://www.paysonsantaquinarea.com/" target="_blank" itemprop="url">
-                                                                                        <img class="fl-photo-img wp-image-4448 size-full" src="https://paysonutah.org/storage/2016/05/chamber.jpg" alt="chamber" itemprop="image">
-                                                                                    </a>
-
-                                                                                </div>
-                                                                            </div></div><h3 class="fl-callout-title"><span><a href="http://www.paysonsantaquinarea.com/" target="_blank" class="fl-callout-title-link">Payson &amp; Santaquin Area Chamber of Commerce</a></span></h3>		<div class="fl-callout-text-wrap">
-                                                                            <div class="fl-callout-text"><p><em>Payson</em>&nbsp;City&nbsp;<em>Chamber of Commerce</em>&nbsp;offers a strong network of businesses working together to keep consumers in our city. Businesses have the opportunity to invest in the community while also giving them a chance to increase their own business growth.</p></div>		</div>
-                                                                    </div>
-                                                                </div>	</div>
-                                                        </div>	</div>
-                                                </div>			<div class="fl-col fl-node-5e432af14e31c fl-col-small" data-node="5e432af14e31c" style="width: 25%;">
-                                                    <div class="fl-col-content fl-node-content">
-                                                        <div class="fl-module fl-module-callout fl-node-5e432af14e35a" data-node="5e432af14e35a" data-animation-delay="0.0">
-                                                            <div class="fl-module-content fl-node-content">
-                                                                <div class="fl-callout fl-callout-center fl-callout-has-photo fl-callout-photo-above-title">
-                                                                    <div class="fl-callout-content">
-                                                                        <div class="fl-callout-photo"><div class="fl-photo fl-photo-crop-landscape fl-photo-align-center" itemscope="" itemtype="http://schema.org/ImageObject">
-                                                                                <div class="fl-photo-content fl-photo-img-jpg">
-                                                                                    <a href="https://www.xpressbillpay.com/#/" target="_blank" itemprop="url">
-                                                                                        <img class="fl-photo-img wp-image-3210 size-medium" src="https://paysonutah.org/storage/bb-plugin/cache/Paying-Online-300x200-landscape.jpg" alt="Paying Online" itemprop="image">
-                                                                                    </a>
-
-                                                                                </div>
-                                                                            </div></div><h4 class="fl-callout-title"><span><a href="https://www.xpressbillpay.com/#/" target="_blank" class="fl-callout-title-link">Pay Your Utility Bill</a></span></h4>		<div class="fl-callout-text-wrap">
-                                                                            <div class="fl-callout-text"><p style="text-align: left;"><strong><a href="https://www.xpressbillpay.com/#/" target="_blank" rel="noopener noreferrer">Click here to pay your utility bill online at xpressbillpay.com</a>.</strong></p></div>		</div>
-                                                                    </div>
-                                                                </div>	</div>
-                                                        </div>	</div>
-                                                </div>	</div>
+                                                @foreach($bottom_copy as $name => $bcopy)
+                                                    @if(strpos(strtolower($name), 'bottom-row-caption') !== false)
+                                                        {!! $bcopy !!}
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
-                                </div><div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-574df37dd0ba7" data-node="574df37dd0ba7">
-                                    <div class="fl-row-content-wrap">
-                                        <div class="fl-row-content fl-row-fixed-width fl-node-content">
+                                </div>
+                                @endif
 
-                                            <div class="fl-col-group fl-node-574df37dd0cc3" data-node="574df37dd0cc3">
-                                                <div class="fl-col fl-node-574df37dd086d" data-node="574df37dd086d" style="width: 100%;">
-                                                    <div class="fl-col-content fl-node-content">
-                                                        <div class="fl-module fl-module-separator fl-node-574df37dd0ee1" data-node="574df37dd0ee1" data-animation-delay="0.0">
-                                                            <div class="fl-module-content fl-node-content">
-                                                                <div class="fl-separator"></div>	</div>
-                                                        </div><div class="fl-module fl-module-icon-group fl-node-574df37dd093b" data-node="574df37dd093b" data-animation-delay="0.0">
-                                                            <div class="fl-module-content fl-node-content">
-                                                                <div class="fl-icon-group fl-icon-group-center">
-	<span class="fl-icon">
-				<a href="https://www.facebook.com/pages/Payson-Utah/129650853802697" target="_blank">
-				<i class="fa fa-facebook"></i>
-		</a>	</span>
-
-                                                                    <span class="fl-icon">
-				<a href="#" target="_blank">
-				<i class="fa fa-twitter"></i>
-		</a>	</span>
-
-                                                                    <span class="fl-icon">
-				<a href="#" target="_blank">
-				<i class="fa fa-google-plus"></i>
-		</a>	</span>
-
-                                                                    <span class="fl-icon">
-				<a href="https://member.everbridge.net/index/1332612387832225#/login" target="_blank">
-				<i class="fa fa-bullhorn"></i>
-		</a>	</span>
-
-                                                                </div>	</div>
-                                                        </div>	</div>
-                                                </div>	</div>
-                                        </div>
-                                    </div>
-                                </div><div class="fl-row fl-row-full-width fl-row-bg-color fl-node-574df37dd0bed" data-node="574df37dd0bed">
-                                    <div class="fl-row-content-wrap">
-                                        <div class="fl-row-content fl-row-fixed-width fl-node-content">
-
-                                            <div class="fl-col-group fl-node-574df37dd0d07" data-node="574df37dd0d07">
-                                                <div class="fl-col fl-node-574df37dd0e5b" data-node="574df37dd0e5b" style="width: 100%;">
-                                                    <div class="fl-col-content fl-node-content">
-                                                        <div class="fl-module fl-module-cta fl-node-574df37dd0e9e" data-node="574df37dd0e9e" data-animation-delay="0.0">
-                                                            <div class="fl-module-content fl-node-content">
-                                                                <div class="fl-cta-wrap fl-cta-inline">
-                                                                    <div class="fl-cta-text">
-                                                                        <h3 class="fl-cta-title">Email the Mayor and City Council</h3>
-                                                                        <span class="fl-cta-text-content"></span>
-                                                                    </div>
-                                                                    <div class="fl-cta-button">
-                                                                        <div class="fl-button-wrap fl-button-width-full">
-                                                                            <a href="https://paysonutah.org/government-transparency/elected-officials/comments-to-council" target="_self" class="fl-button" role="button">
-                                                                                <span class="fl-button-text">Get In Touch</span>
-                                                                            </a>
-                                                                        </div>	</div>
-                                                                </div>	</div>
-                                                        </div>	</div>
-                                                </div>	</div>
-                                        </div>
-                                    </div>
-                                </div></div>	</div><!-- .fl-post-content -->
-
-
+                                @include('payson.home.social')
+                            </div>
+                        </div><!-- .fl-post-content -->
                     </article>
-                    <!-- .fl-post -->					</div>
+                    <!-- .fl-post -->
+                </div>
             </div>
         </div>
-
-
     </div><!-- .fl-page-content -->
-    <footer class="fl-page-footer-wrap" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
-        <div class="fl-page-footer">
-            <div class="fl-page-footer-container container">
-                <div class="fl-page-footer-row row">
-                    <div class="col-md-12 text-center clearfix"><div class="fl-page-footer-text fl-page-footer-text-1">© 2020 Payson | Powered with <a href="https://capeandbay.com"><i class="fad fa-anchor"></i></a> by CityCRM</div></div>					</div>
-            </div>
-        </div><!-- .fl-page-footer -->	</footer>
-</div><!-- .fl-page -->
-<script type="text/javascript">
-
-    if(typeof jQuery == 'undefined' || typeof jQuery.fn.on == 'undefined') {
-        document.write('<script src="https://paysonutah.org/template/ext/bb-plugin/js/jquery.js"><\/script>');
-        document.write('<script src="https://paysonutah.org/template/ext/bb-plugin/js/jquery.migrate.min.js"><\/script>');
-    }
-
-</script><script type="text/html" id="tmpl-fl-node-template-block">
-    <span class="fl-builder-block fl-builder-block-saved-@{{data.type}}<# if ( data.global ) { #> fl-builder-block-global<# } #>" data-id="@{{data.id}}">
-		<span class="fl-builder-block-title">@{{data.name}}</span>
-		<# if ( data.global ) { #>
-		<div class="fl-builder-badge fl-builder-badge-global">
-			Global		</div>
-		<# } #>
-		<span class="fl-builder-node-template-actions">
-			<a class="fl-builder-node-template-edit" href="@{{data.link}}" target="_blank">
-				<i class="fa fa-wrench"></i>
-			</a>
-			<a class="fl-builder-node-template-delete" href="javascript:void(0);">
-				<i class="fa fa-times"></i>
-			</a>
-		</span>
-	</span>
-</script>
-<!-- #tmpl-fl-node-template-block --><script type="text/javascript" src="https://paysonutah.org/template/ext/bb-plugin/js/jquery.easing.1.3.js?ver=1.3"></script>
-<script type="text/javascript" src="https://paysonutah.org/template/ext/bb-plugin/js/jquery.fitvids.js?ver=1.8.1"></script>
-<script type="text/javascript" src="https://paysonutah.org/template/ext/bb-plugin/js/jquery.bxslider.min.js?ver=1.8.1"></script>
-<script type="text/javascript" src="https://paysonutah.org/storage/bb-plugin/cache/7-layout.js?ver=3aa732626d12444ce6cd4b0daf49c893"></script>
-<script type="text/javascript" src="https://paysonutah.org/template_main/js/jquery.throttle.min.js?ver=1.5.1"></script>
-<script type="text/javascript" src="https://paysonutah.org/template/ext/bb-plugin/js/jquery.magnificpopup.min.js?ver=1.8.1"></script>
-<script type="text/javascript" src="https://paysonutah.org/template_main/js/bootstrap.min.js?ver=1.5.1"></script>
-<script type="text/javascript" src="https://paysonutah.org/template_main/js/theme.js?ver=1.5.1"></script>
-<script type="text/javascript" src="https://paysonutah.org/template/lib/js/wp-embed.min.js?ver=4.7.18"></script>
-<script>
-    function user_logout() {
-        var data = {action: 'u_logout'};
-        jQuery.post('https://paysonutah.org/ajax', data, function(response) {
-            location.reload(true);
-        });
-    }
-    function add_page()
-    {
-        var pName = document.getElementById('p_name_box').value;
-        var pId = document.getElementById('add-p-b').getAttribute("p_id");
-        var data = {
-            action: 'add_new_page',
-            p_name: pName,
-            parent: pId
-        };
-        jQuery.post('https://paysonutah.org/ajax', data, function(response) {
-            location.reload(true);
-        });
-
-    }
-    function delete_page()
-    {
-        var pId = document.getElementById('d-p-b').getAttribute("p_id");
-        var data = {
-            action: 'delete_page',
-            page: pId
-        };
-        jQuery.post('https://paysonutah.org/ajax', data, function(response) {
-            location.assign(response);
-        });
-
-    }
-    function set_page_name()
-    {
-        var pName = document.getElementById('set_name_box').value;
-        var pId = document.getElementById('set_name_b').getAttribute("p_id");
-
-        var data = {
-            action: 'set_page_name',
-            page: pId,
-            p_name: pName
-        };
-        jQuery.post('https://paysonutah.org/ajax', data, function(response) {
-            location.assign(response);
-        });
-
-    }
-
-    jQuery('.fl-slide-content a').on('pointerdown', function(){return false});
-</script>
-</body></html>
+@endsection
