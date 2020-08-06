@@ -133,10 +133,12 @@
                 flex-flow: column;
                 justify-content: center;
                 margin: 0 15%;
+                align-items: center;
             }
 
             .inner-logo-header img {
-                width: 100%;
+                width: 25%;
+                object-fit: contain;
             }
 
             .nav-steps li {
