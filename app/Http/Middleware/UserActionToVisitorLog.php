@@ -3,6 +3,7 @@
 namespace AnchorCMS\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 use AnchorCMS\VisitorActivity;
 
@@ -35,7 +36,7 @@ class UserActionToVisitorLog
         }
         catch (\Throwable $e) {
             if (env('APP_ENV') != 'local') {
-                // @todo - do something here.
+                Log::emergency('UserActionToVisitorLog - something broke. - '.$e->getMessage());
             }
         }
 
